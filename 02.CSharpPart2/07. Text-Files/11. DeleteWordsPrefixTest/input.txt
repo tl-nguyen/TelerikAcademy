@@ -1,0 +1,10 @@
+<?xml version="1.0">
+<studenttest>
+	<testname()>Pesho</testname>
+	<age>21</age>
+	<interests count="3">
+		<testinterest123> testGames</testinstrest123>
+		<interest>C#</instrest>
+		<testinterest123> Javatest</testinstrest123>
+	</interests>
+</studenttest>

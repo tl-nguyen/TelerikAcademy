@@ -1,0 +1,40 @@
+@import "compass";
+
+@include global-reset();
+
+$form_grad: #6ad4ff;
+$form_grad2: #8afcfb;
+$hover: #9be1ff;
+
+#wrapper {
+  font: 16px Verdana, Geneva, 'DejaVu Sans', sans-serif;
+  width: 960px;
+}
+
+form {
+  text-align: right;
+  width: 480px;
+  height: 390px;
+  border: 1px solid  black;
+  @include border-radius(10px);
+  @include background-image(linear_gradient($form_grad, $form_grad2));
+}
+
+fieldset {
+  border: 2px solid black;
+  padding: 20px;
+  margin: 20px 15px;
+
+
+  position: relative;
+  @include border-radius(5px);
+//  legend {
+//    position:absolute;
+//    font-size: 1.5rem;
+//    left: 150px;
+//    top: -15px;
+//    background-color: $form_grad;
+//  }
+}
+
+

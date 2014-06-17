@@ -1,0 +1,72 @@
+-------
+1. Find information about Console.WriteLine() method
+
+Answer:
+ Console.WriteLine Method: Writes the current line terminator to the standard output stream.
+
+-------
+10. Provide a short list with information about the most popular programming languages. How do they differ from C#?
+
+Answer:
+
+
+1. C#:
+	C# (pronounced “C-Sharp”) was developed by Microsoft in 2000 as a fundamental part of its .NET framework. C# is an 
+	object-oriented, multi-paradigm programming language that combines the best of C and C++. Learning C# is a must for 
+	any programmer who wants to develop for Microsoft platforms (including Windows).
+
+2. Java:
+	Java is an object-oriented programming language developed in 1995 by Sun Microsystems. In less than 20 years, 
+	Java has become among the most popular programming languages in the world (ranked no.2 as per TIOBE Programming 
+	Community Index, no.1 on JobsTractor). Java is platform independent, which means that programs made for Mac OS X 
+	can be run on Windows and Linux, and vice versa. This feature is one of the reasons why Java is the go-to language 
+	for most enterprise applications. Compare to C#, Java is much alike to C#, except that C# is Microsoft product and
+	Java is open source so C# is a more supported language and technically more advanced
+
+3. C Language:
+	C is one of the oldest programming languages used today. It was originally developed in 1972 by Dennis Ritchie at 
+	Bell Labs. C is the “grandfather” of many programming languages, including Java, C#, C++, Perl and JavaScript.
+	C is powerful, stable, and easily available on virtually all platforms. The primary interpretation of many popular 
+	languages like Python and PHP are written in C language. This is the reason why C is one of the first languages taught 
+	to students, as it can make learning other languages far easier.
+
+4. C++:
+	C++ was originally created in 1983 to address the shortcomings of the C language. It is an intermediate-level language 
+	with object-oriented programming features. C++ powers some of the most popular desktop applications in the world, including 
+	the entire suite of Adobe software (Adobe Photoshop, Illustrator, etc.), Mozilla Firefox, Google Chromium, and Winamp. 
+
+
+5. Objective-C:
+	Objective-C was developed in 1983 by Tom Love and Brad Cox at Apple to address the objected-oriented deficiencies of C language. 
+	Objective C is the primary language used in Apple OS X and iOS operating systems. The surge in popularity of Macs and Apple “i’” 
+	devices (including iPad and iPhone) has created a huge demand for Objective-C programmers. A working knowledge of Objective-C 
+	will help you develop apps for iOS, which paves the way for thousands of jobs in startups as well as big tech companies 
+	(17,702 jobs, as per Indeed). As an Objective-C programmer, you can also freelance and create apps for iOS on your own.
+
+6. PHP:
+	PHP (Hypertext Processor) is a server-side scripting language that powers more than 244m websites online, including the 
+	popular publishing platforms WordPress, Joomla, and Drupal. Created in 1995, PHP is one of the younger languages on this list.
+	PHP is relatively easy to learn and can be readily embedded within HTML pages, which has made it the go-to general purpose 
+	programming language online. The high demand for web application developers has led to a huge surfeit in PHP jobs. Mastering 
+	PHP is often the first step to becoming a full-fledged web developer.
+
+7. Python:
+	Python was created in 1991 by Guido van Rossum. This high-level programming language emphasizes readability and simplicity and 
+	is a great language for beginners to start their programming journey. Python has enjoyed a resurgence in popularity in the 
+	last few years and now powers some of the most popular websites in the world, like Instagram.com, Pinterest.com, and Rdio.com 
+	through its associated web framework, Django. Google has invested especially heavily in Python development in the last decade 
+	or so, which has further added to the language’s popularity (in fact, Python founder van Rossum was a Google employee from 2005 
+	to 2012).
+
+8. Ruby:
+	Ruby was developed in 1995 by Yukihiro Matsumoto by combining elements from Perl, Lisp, and Eiffel. It is an object-oriented, 
+	dynamic language that emphasizes simplicity and automation. Ruby powers the Ruby on Rails framework, which is used on popular 
+	websites like Yammer, Scribd, Github, Groupon, and Shopify. Many students new to programming also find Ruby comparatively easy 
+	to learn because of its simple syntax and English-like readability.	
+
+-------
+11. Describe the difference between C# and .NET Framework.
+
+Answer:
+	C# is a programming language, .NET is a blanket term that tends to cover both the .NET Framework (an application framework 
+	ibrary) and the Common Language Runtime which is the runtime in which .NET assemblies are run.

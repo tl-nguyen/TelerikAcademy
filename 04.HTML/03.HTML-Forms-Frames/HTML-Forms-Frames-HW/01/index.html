@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>User Profile</title>
+    <style>
+        table {
+            width: 550px;
+        }
+        table,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        tfoot td {
+            background-color: #6ad4dd;
+            text-align: center;
+        }
+        .input-lg {
+            width: 80px;
+        }
+        .input-md {
+            width: 30px;
+        }
+        .input-sm {
+            width: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="post" action="">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="ln">Last Name</label>
+                    </td>
+                    <td>
+                        <input type="text" placeholder="Nakov" id="ln" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td>
+                        <input type="text" placeholder="Svetlin" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>
+                        <textarea rows="5" placeholder="">
+                            17 Hristo Botev Str., floor 3, apt. 12
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>City</td>
+                    <td>
+                        <input type="text" placeholder="Kaspichan" />State
+                        <input type="text" class="input-md" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zip/Postal Code</td>
+                    <td>
+                        <input type="text" placeholder="9325" class="input-md" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Country</td>
+                    <td>
+                        <select>
+                            <option selected="selected">Bulgaria</option>
+                            <option>United States</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Phone (country code, area code, number)</td>
+                    <td>
+                        (+
+                        <input type="text" class="input-md" placeholder="359" />)
+                        <input type="text" class="input-md" placeholder="88" />-
+                        <input type="text" class="input-lg" placeholder="8334343" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>
+                        <input type="email" placeholder="nakov@kaspichan.org">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Birth date</td>
+                    <td>
+                        Month
+                        <input type="text" class="input-sm" placeholder="06" />&nbsp;Day
+                        <input type="text" class="input-sm" placeholder="14" />&nbsp;Year(4 digit)
+                        <input type="text" class="input-md" placeholder="1980" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>
+                        <select class="input-lg">
+                            <option selected="selected">Male</option>
+                            <option>Female</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Starting date</td>
+                    <td>
+                        <input type="radio" name="season" value="spring">Spring 2006
+                        <input type="radio" name="season" value="summer">Summer 2006
+                    </td>
+                </tr>
+                <tr>
+                    <td>Comments/Questions</td>
+                    <td>
+                        <textarea rows="5">
+                            Please send me more information about lodging
+                        </textarea>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Submit">
+                        <input type="reset" value="Clear This Form">
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </form>
+</body>
+
+</html>

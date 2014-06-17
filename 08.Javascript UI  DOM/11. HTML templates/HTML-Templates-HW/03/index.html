@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <table>
+        <thead>
+        <tr><th>#</th><th>Name</th><th>Mark</th></tr>
+        </thead>
+        <tbody id="students-table"
+               data-template="students-row-template">
+        </tbody>
+    </table>
+
+    <ul id="books-list"
+        data-template="book-item-template"></ul>
+
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="../handlebars-v1.3.0.js"></script>
+
+    <script id="book-item-template" type="text/x-handlebars-template">
+        {{#each items}}
+            <li class="book-item">
+                <a href="/#books/{{id}}">
+                    <strong>{{title}}</strong>
+                </a>
+            </li>
+        {{/each}}
+    </script>
+
+    <script id="students-row-template" type="text/x-handlebars-template">
+        {{#each items}}
+            <tr class="student-row">
+                <td>{{number}}</td>
+                <td>{{name}}</td>
+                <td>{{mark}}</td>
+            </tr>
+        {{/each}}
+    </script>
+
+    <script>
+//        var selectNode = document.getElementById('select');
+//        var selectString = selectNode.innerHTML;
+//        var selectTemplate = Handlebars.compile(selectString);
+//
+//        var options = [{
+//            value: 1,
+//            text: 'One'
+//        }, {
+//            value: 2,
+//            text: 'Two'
+//        }];
+//
+//
+//        var selectHTML = selectTemplate({
+//            options: options
+//        });
+//
+//        document.body.innerHTML += (selectHTML);
+
+        $(document).ready(function () {
+            $.fn.listview = function (data) {
+                var $this = $(this);
+                var templateName = $this.attr('data-template');
+                var listViewNode = $('#' + templateName);
+                var listViewString = listViewNode.html();
+                var listViewTemplate = Handlebars.compile(listViewString);
+                var listViewHTML = listViewTemplate({
+                    items: data
+                });
+
+                $this.html(listViewHTML);
+
+                return $this;
+            };
+
+            // test 1
+            $("#students-table").listview([
+                {
+                    number: 112,
+                    name: 'Pesho',
+                    mark: 10
+                },
+                {
+                    number: 113,
+                    name: 'Maria',
+                    mark: 8
+                }
+            ]);
+
+            // test 2
+            $("#books-list").listview([
+                {
+                    id: 1231032,
+                    title: 'JS the good part'
+                },
+                {
+                    id: 9783497,
+                    title: 'C# Programming'
+                }
+            ]);
+
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+    <script src="../handlebars-v1.3.0.js"></script>
+
+    <script id="courses" type="text/x-handlebars-template">
+        <table>
+            <tr>
+                <td>N</td>
+                <td>Title</td>
+                <td>Date #1</td>
+                <td>Date #2</td>
+            </tr>
+            {{#each courses}}
+            <tr>
+                <td>{{@index}}</td>
+                <td>{{title}}</td>
+                <td>{{date1}}</td>
+                <td>{{date2}}</td>
+            </tr>
+            {{/each}}
+        </table>
+    </script>
+
+    <script>
+        var coursesNode = document.getElementById('courses');
+        var coursesString = coursesNode.innerHTML;
+        var coursesTemplate = Handlebars.compile(coursesString);
+
+        var courses = [
+            {
+                title: 'Javascript',
+                date1: '15/05/2014',
+                date2: '17/05/2014'
+            },
+            {
+                title: 'JS UI & DOM',
+                date1: '15/06/2014',
+                date2: '17/06/2014'
+            },
+            {
+                title: 'JS OOP',
+                date1: '22/07/2014',
+                date2: '24/07/2014'
+            },
+        ];
+
+
+        var coursesHTML = coursesTemplate({
+            courses: courses
+        });
+
+        document.body.innerHTML += (coursesHTML);
+
+    </script>
+</body>
+</html>

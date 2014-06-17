@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            list-style: none;
+        }
+        .base {
+            margin: 15px;
+        } 
+        .sub {
+            display: none;
+            color: #5f5f5f;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="base">
+        <li>
+            <a href="#">List item</a>
+            <ul class="sub">
+                <li>Sublist item</li>
+                <li>Sublist item</li>
+                <li>Sublist item</li>
+                <li>Sublist item</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">List item</a>
+        </li>
+        <li>
+            <a href="#">List item</a>
+        </li>
+        <li>
+            <a href="#">List item</a>
+            <ul class="sub">
+                <li>Sublist item</li>
+                <li>Sublist item</li>
+                <li>Sublist item</li>
+                <li>Sublist item</li>
+            </ul>
+        </li>
+    </ul>
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    
+    <script>
+        $('a').hover(
+        function () {
+            $(this).siblings('.sub').css('display', 'block');
+        }, function () {
+            $(this).siblings('.sub').css('display', 'none');
+        });
+    </script>
+</body>
+
+</html>

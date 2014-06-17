@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <button id="successBtn">Show success message test</button>
+    <button id="errorBtn">Show error message test</button>
+
+    <div id="message-box"></div>
+
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="messageBox-plugin.js"></script>
+    <script>
+        $(document).ready(function () {
+            var msgBox = $("#message-box").messageBox();
+
+            $("#successBtn").on('click', function () {
+                msgBox.success('done');
+            });
+
+            $("#errorBtn").on('click', function () {
+                msgBox.error('error');
+            });
+        });
+    </script>
+</body>
+</html>

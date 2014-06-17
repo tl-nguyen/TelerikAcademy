@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. PrintMatrixNxN", "01. PrintMatrixNxN\01. PrintMatrixNxN.csproj", "{33A76DAE-5604-44B5-988F-AB2A0E3C84C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. MaxSumOfElements", "02. MaxSumOfElements\02. MaxSumOfElements.csproj", "{52822194-6830-403E-BC6A-2873E12DD9DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. LongestSequence", "03. LongestSequence\03. LongestSequence.csproj", "{A33FA84F-B95A-4823-BAB2-F49FD20DAFBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. SearchFromArray", "04. SearchFromArray\04. SearchFromArray.csproj", "{6EB48C2A-F9E1-4053-BB33-5AEBB65893F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. SortStringsByLength", "05. SortStringsByLength\05. SortStringsByLength.csproj", "{01E53466-7310-49A4-9B6C-26A7989456A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06. MatrixClass", "06. MatrixClass\06. MatrixClass.csproj", "{B1DCE0A5-1C0F-441A-8F8D-BC2ECDC55F1B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33A76DAE-5604-44B5-988F-AB2A0E3C84C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33A76DAE-5604-44B5-988F-AB2A0E3C84C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33A76DAE-5604-44B5-988F-AB2A0E3C84C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33A76DAE-5604-44B5-988F-AB2A0E3C84C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52822194-6830-403E-BC6A-2873E12DD9DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52822194-6830-403E-BC6A-2873E12DD9DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52822194-6830-403E-BC6A-2873E12DD9DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52822194-6830-403E-BC6A-2873E12DD9DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A33FA84F-B95A-4823-BAB2-F49FD20DAFBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A33FA84F-B95A-4823-BAB2-F49FD20DAFBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A33FA84F-B95A-4823-BAB2-F49FD20DAFBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A33FA84F-B95A-4823-BAB2-F49FD20DAFBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EB48C2A-F9E1-4053-BB33-5AEBB65893F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB48C2A-F9E1-4053-BB33-5AEBB65893F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EB48C2A-F9E1-4053-BB33-5AEBB65893F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EB48C2A-F9E1-4053-BB33-5AEBB65893F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01E53466-7310-49A4-9B6C-26A7989456A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01E53466-7310-49A4-9B6C-26A7989456A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01E53466-7310-49A4-9B6C-26A7989456A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01E53466-7310-49A4-9B6C-26A7989456A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1DCE0A5-1C0F-441A-8F8D-BC2ECDC55F1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1DCE0A5-1C0F-441A-8F8D-BC2ECDC55F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1DCE0A5-1C0F-441A-8F8D-BC2ECDC55F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1DCE0A5-1C0F-441A-8F8D-BC2ECDC55F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

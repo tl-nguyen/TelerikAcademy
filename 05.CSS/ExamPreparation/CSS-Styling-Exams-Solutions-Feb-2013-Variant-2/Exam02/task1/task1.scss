@@ -1,0 +1,78 @@
+@import "compass";
+
+@include global-reset();
+
+$label_grad: #eeeeee;
+$label_grad2: #b1b1b1;
+$label_text: #444444;
+$content: #aaaaaa;
+$content_text: #5e5e5e;
+$width: 400px;
+$height: 210px;
+
+a {
+  text-decoration: none;
+  color: $label_text;
+  &.accordion-btn {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    border: 1px solid black;
+    @include background-image(linear_gradient($label_grad, $label_grad2));
+  }
+}
+#wrapper {
+  font: 18px Helvetica, Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+  width: 960px;
+}
+
+ul.accordion {
+  width: $width;
+  border: 1px solid black;
+  background: $content;
+
+  li {
+    div.accordion-content {
+      display: none;
+      color: #444444;
+      padding: 5px;
+    }
+  }
+
+  li.current {
+    a {
+      border-bottom: none;
+    }
+    div.accordion-content {
+      display: block;
+    }
+  }
+}
+
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 5px;
+  color: $content_text;
+}
+
+table {
+  border: 1px solid black;
+  text-align: center;
+  margin: 20px auto;
+  th, tr, td {
+    border: 1px solid black;
+    padding: 5px;
+  }
+  th {
+    font-weight: bold;
+    background-color: #c9c9c9;
+  }
+  td {
+    color: white;
+    @include background-image(linear_gradient(#c7c7c7, #8d8d8d));
+  }
+}

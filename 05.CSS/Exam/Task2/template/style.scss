@@ -1,0 +1,76 @@
+@import "compass";
+
+@include global-reset();
+
+$btn_yellow: #b6ff00;
+$tab_green: #008000;
+
+#wrapper {
+  width: 960px;
+  font: 16px Constantina, Georgia, 'Nimbus Roman No9 L', serif;
+}
+
+a {
+  @include unstyled-link();
+  &:hover {
+    text-decoration: underline;
+  }
+}
+li {
+  text-align: center;
+  padding-top: 10px;
+}
+.menu {
+  > li {
+    background-color: $btn_yellow;
+    width: 180px;
+    height: 30px;
+    @include border-radius(10px);
+    margin: 10px 0;
+    position: relative;
+    .sub-menu li {
+      height: 40px;
+      background-color: $tab_green;
+      position: relative;
+      left: 180px;
+      top: -40px;
+      @include border-radius(10px);
+      margin-top: 10px;
+      display: none;
+    }
+    &:hover {
+      .sub-menu > li {
+        display: block;
+        background-color: $tab_green;
+        width: 500px;
+        text-align: left;
+        padding-top: 15px;
+        a {
+          color: white;
+          padding-left: 10px;
+          margin-top: 10px;
+        }
+        > img {
+          display: none;
+          @include border-bottom-radius(10px);
+          border: 30px solid $tab_green;
+          width: 440px;
+          margin: 0 auto;
+          margin-top: 15px;
+          z-index: 1000;
+        }
+        &:hover {
+          > img {
+            display: block;
+            height: 300px;
+          }
+
+          + li {
+            position: absolute;
+            top: 360px
+          }
+        }
+      }
+    }
+  }
+}

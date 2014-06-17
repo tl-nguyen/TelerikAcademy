@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <div id="slickGrid"></div>
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="gridview-plugin.js"></script>
+    <script>
+        $(document).ready(function () {
+            var data = ["N", "Name", "Mark"];
+
+            $("#slickGrid").gridView(data);
+        });
+    </script>
+</body>
+</html>

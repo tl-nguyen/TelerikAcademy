@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+
+
+
+    <script>
+        $(document).ready(function () {
+
+            var Student = function (fName, lName, grade) {
+                this.firstName = fName;
+                this.lastName = lName;
+                this.grade = grade;
+            },
+
+            students = [
+                    new Student('gosho', 'goshev', '2'),
+                    new Student('blago', 'blagoew', '1'),
+                    new Student('ivan', 'ivanov', 5),
+                    new Student('maria', 'tasheva', 5)
+            ];
+
+            var table = buildTable(students);
+
+            function buildTable (students) {
+                var $table = $("<table>"),
+                    $tr, $td;
+
+                for (var i = 0, len = students.length; i < len; i += 1) {
+                    $tr = $("<tr>");
+                    $td = $("<td>");
+
+                    $td.text(students[i].firstName);
+                    $tr.append($td.clone());
+
+                    $td.text(students[i].lastName);
+                    $tr.append($td.clone());
+
+                    $td.text(students[i].grade);
+                    $tr.append($td.clone());
+
+                    $table.append($tr.clone());
+                }
+
+                return $table;
+            }
+
+            $(document.body).append(table);
+        });
+    </script>
+</body>
+</html>

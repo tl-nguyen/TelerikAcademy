@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+
+    <div id="div1">
+        <p id="p1">Hello it's paragraph 1</p>
+    </div>
+
+<script>
+    $(document).ready(function () {
+
+        $.prototype.addBefore = function (element) {
+            $(this).prepend(element);
+        };
+
+        $.prototype.addAfter = function (element) {
+            $(this).append(element);
+        }
+
+        $("#div1").addBefore("<h2>added before</h2>");
+        $("#div1").addAfter("<h2>added after</h2>");
+    });
+</script>
+</body>
+</html>

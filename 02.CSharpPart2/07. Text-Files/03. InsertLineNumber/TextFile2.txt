@@ -1,0 +1,32 @@
+ Line 0 : 1
+ Line 1 : 00:00:01,000 --> 00:00:04,074
+ Line 2 : Subtitles downloaded from Podnapisi.NET
+ Line 3 : 
+ Line 4 : 2
+ Line 5 : 00:00:07,149 --> 00:00:08,901
+ Line 6 : [Whimsical instrumental music]
+ Line 7 : 
+ Line 8 : 3
+ Line 9 : 00:00:51,570 --> 00:00:53,655
+ Line 10 : [Whimsical music continues]
+ Line 11 : 
+ Line 12 : 4
+ Line 13 : 00:01:24,895 --> 00:01:28,023
+ Line 14 : PRINCETON UNIVERSITY - SEPTEMBER 1947
+ Line 15 : 
+ Line 16 : 5
+ Line 17 : 00:01:29,941 --> 00:01:32,402
+ Line 18 : Mathematicians won the war.
+ Line 19 : 
+ Line 20 : 6
+ Line 21 : 00:01:33,194 --> 00:01:36,197
+ Line 22 : Mathematicians broke
+ Line 23 : the Japanese codes...
+ Line 24 : 
+ Line 25 : 7
+ Line 26 : 00:01:36,406 --> 00:01:38,325
+ Line 27 : ...and built the A-bomb.
+ Line 28 : 
+ Line 29 : 8
+ Line 30 : 00:01:38,700 --> 00:01:41,411
+ Line 31 : Mathematicians, like you.

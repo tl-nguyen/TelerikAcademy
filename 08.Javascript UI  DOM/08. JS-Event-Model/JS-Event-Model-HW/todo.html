@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>TODO List</title>
+</head>
+<body>
+<!--Create a to-do list with the following UI controls-->
+<!-- Form input for new Item-->
+<!-- Button for adding the new Item-->
+<!-- Button for deleting some item-->
+<!-- Show and Hide Button-->
+
+
+    <script>
+        (function () {
+            var todolist = document.createElement("div");
+            var input = document.createElement("input");
+            var submitBtn = document.createElement("button");
+
+            todolist.appendChild(document.createTextNode("TO DO LIST"));
+            todolist.style.textAlign = 'center';
+
+            input.setAttribute("type", "text");
+            submitBtn.appendChild(document.createTextNode("Add"));
+
+
+            todolist.appendChild(input);
+            todolist.appendChild(submitBtn);
+
+            submitBtn.addEventListener('click', function () {
+                todolist.appendChild(makeItem(input.value));
+            });
+
+            function makeItem(text) {
+                var item = document.createElement("div");
+                var delBtn = document.createElement("button");
+
+                delBtn.addEventListener('click', function () {
+                    this.parentNode.parentNode.removeChild(item);
+                });
+
+                delBtn.appendChild(document.createTextNode("X"));
+                item.innerText = text;
+                item.appendChild(delBtn);
+
+                return item;
+            }
+
+            document.body.appendChild(todolist);
+        }());
+    </script>
+</body>
+</html>

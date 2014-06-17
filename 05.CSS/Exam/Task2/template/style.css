@@ -1,0 +1,138 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+#wrapper {
+  width: 960px;
+  font: 16px Constantina, Georgia, 'Nimbus Roman No9 L', serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: inherit;
+}
+a:active, a:focus {
+  outline: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+li {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.menu > li {
+  background-color: #b6ff00;
+  width: 180px;
+  height: 30px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  margin: 10px 0;
+  position: relative;
+}
+.menu > li .sub-menu li {
+  height: 40px;
+  background-color: green;
+  position: relative;
+  left: 180px;
+  top: -40px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  display: none;
+}
+.menu > li:hover .sub-menu > li {
+  display: block;
+  background-color: green;
+  width: 500px;
+  text-align: left;
+  padding-top: 15px;
+}
+.menu > li:hover .sub-menu > li a {
+  color: white;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+.menu > li:hover .sub-menu > li > img {
+  display: none;
+  -moz-border-radius-bottomleft: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 30px solid green;
+  width: 440px;
+  margin: 0 auto;
+  margin-top: 15px;
+  z-index: 1000;
+}
+.menu > li:hover .sub-menu > li:hover > img {
+  display: block;
+  height: 300px;
+}
+.menu > li:hover .sub-menu > li:hover + li {
+  position: absolute;
+  top: 360px;
+}

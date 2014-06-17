@@ -1,0 +1,82 @@
+@import "compass";
+
+// =Declarations
+$main-font-fam: Cambria, 'Times New Roman', 'Nimbus Roman No9 L', 'Freeserif', Times, serif;
+$font-size: 16px;
+$grad_btn: #fff;
+$grad-btn2: #b0b0b0;
+$btn-hover: lighten($grad-btn2, 40%);
+$tab-width: 355px;
+$def-border: 1px solid black;
+
+@include global-reset();
+
+// =Elements
+body {
+  font: $font-size $main-font-fam;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: black;
+}
+
+.tab-strip {
+  > .current {
+    background-image: (linear_gradient($grad_btn, $grad_btn));
+    @include single-box-shadow(black, 1px, 0, 0);
+    @include border-radius(0);
+    position: relative;
+    > .tab-content {
+      display: block;
+    }
+  }
+
+  > li {
+    text-align: center;
+    width: 86px;
+    height: 40px;
+    @include background-image(linear_gradient($grad_btn, $grad_btn2));
+    @include single-box-shadow(black, 1px, 1px, 0);
+    @include border-radius(5px);
+    background-color: $btn-hover;
+    list-style: none;
+    float: left;
+    &:last-child {
+      text-align: left;
+      margin: 0;
+      @include single-box-shadow(black, -1px, 1px, 0);
+    }
+    &:hover {
+      background-image: none;
+    }
+    .tab-content {
+      display: none;
+      position: fixed;
+      top: 50px;
+      left: 10px;
+    }
+
+    li {
+      position: relative;
+      list-style: disc;
+      left: 10px;
+       li {
+        position: relative;
+        list-style: lower-alpha;
+
+      }
+    }
+  }
+}
+
+#wrapper {
+  width: $tab-width;
+  height: 250px;
+  border: 1px solid black;
+  @include border-radius(5px);
+}
+
+
+

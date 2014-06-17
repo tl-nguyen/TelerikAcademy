@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Store</title>
+    <style>
+        th li {
+            float: left;
+            padding-left: 5px;
+            list-style: none;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        a {
+            color: #32b8f4;
+        }
+        table {
+            width: 900px;
+            border: 2px solid black;
+        }
+        table#products {
+            width: 650px;
+        }
+        img {
+            float: left;
+        }
+        th {
+            border-bottom: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="post" action="">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">
+                        <ul>
+                            <li>
+                                <a href="#">Apple</a>
+                            </li>
+                            <li>
+                                <a href="#">Toshiba</a>
+                            </li>
+                            <li>
+                                <a href="#">Lenovo</a>
+                            </li>
+                            <li>
+                                <a href="#">Dell</a>
+                            </li>
+                            <li>
+                                <a href="#">Asus</a>
+                            </li>
+                            <li>
+                                <a href="#">Hacer</a>
+                            </li>
+                            <li>
+                                <a href="#">HP</a>
+                            </li>
+                        </ul>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <table id="products">
+                            <tr>
+                                <td>
+                                    <fieldset>
+                                        <legend>Apple Macbook Air</legend>
+                                        <img src="apple.jpg" alt="Macbook air pic" />
+                                        <p>64GB SSD</p>
+                                        <p>2GB DDR</p>
+                                        <p>1300 USD Intel Core i5</p>
+                                    </fieldset>
+                                </td>
+                                <td>
+                                    <fieldset>
+                                        <legend>Apple Macbook Air</legend>
+                                        <img src="apple.jpg" alt="Macbook air pic" />
+                                        <p>64GB SSD</p>
+                                        <p>2GB DDR</p>
+                                        <p>1300 USD Intel Core i5</p>
+                                    </fieldset>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <fieldset>
+                                        <legend>Apple Macbook Air</legend>
+                                        <img src="apple.jpg" alt="Macbook air pic" />
+                                        <p>64GB SSD</p>
+                                        <p>2GB DDR</p>
+                                        <p>1300 USD Intel Core i5</p>
+                                    </fieldset>
+                                </td>
+                                <td>
+                                    <fieldset>
+                                        <legend>Apple Macbook Air</legend>
+                                        <img src="apple.jpg" alt="Macbook air pic" />
+                                        <p>64GB SSD</p>
+                                        <p>2GB DDR</p>
+                                        <p>1300 USD Intel Core i5</p>
+                                    </fieldset>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <fieldset>
+                                        <legend>Apple Macbook Air</legend>
+                                        <img src="apple.jpg" alt="Macbook air pic" />
+                                        <p>64GB SSD</p>
+                                        <p>2GB DDR</p>
+                                        <p>1300 USD Intel Core i5</p>
+                                    </fieldset>
+                                </td>
+                                <td>
+                                    <fieldset>
+                                        <legend>Apple Macbook Air</legend>
+                                        <img src="apple.jpg" alt="Macbook air pic" />
+                                        <p>64GB SSD</p>
+                                        <p>2GB DDR</p>
+                                        <p>1300 USD Intel Core i5</p>
+                                    </fieldset>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <p>Min Price: 500 USD</p>
+                        <input type="range" name="min-price" min="0" max="3000">
+                        <p>Max Price: 1500 USD</p>
+                        <input type="range" name="max-price" min="0" max="3000">
+                        <p>Min RAM: 4 GB</p>
+                        <input type="range" name="min-ram" min="0" max="32">
+                        <p>Max RAM: 16GB</p>
+                        <input type="range" name="max-ram" min="0" max="32">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</body>
+
+</html>

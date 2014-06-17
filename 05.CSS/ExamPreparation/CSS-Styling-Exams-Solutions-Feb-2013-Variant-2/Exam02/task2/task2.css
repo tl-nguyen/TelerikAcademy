@@ -1,0 +1,124 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+#wrapper {
+  font: 16px 'Courier New', Courier, 'Nimbus Mono L', monospace;
+  width: 960px;
+  color: #777777;
+}
+
+img {
+  width: 15px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.notification-list {
+  width: 480px;
+  border: 1px solid black;
+  -moz-border-radius-topleft: 15px;
+  -webkit-border-top-left-radius: 15px;
+  border-top-left-radius: 15px;
+  -moz-border-radius-topright: 15px;
+  -webkit-border-top-right-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom: none;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b1b1b1), color-stop(10px, #dddddd), color-stop(100%, #dddddd));
+  background-image: -webkit-linear-gradient(#b1b1b1, #dddddd 10px, #dddddd);
+  background-image: -moz-linear-gradient(#b1b1b1, #dddddd 10px, #dddddd);
+  background-image: -o-linear-gradient(#b1b1b1, #dddddd 10px, #dddddd);
+  background-image: linear-gradient(#b1b1b1, #dddddd 10px, #dddddd);
+  position: relative;
+}
+.notification-list > li {
+  display: inline-block;
+  padding: 5px 22px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.notification-list > li:hover {
+  border-bottom: none;
+}
+.notification-list > li:hover .content {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 470px;
+  margin-top: 7px;
+}
+.notification-list > li:last-child {
+  border-right: none;
+}
+.notification-list > li div.content {
+  padding: 5px;
+  display: none;
+  background-color: #dddddd;
+  border: 1px solid black;
+  border-top: none;
+}
+.notification-list > li div.content li {
+  padding: 5px 0;
+}

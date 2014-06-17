@@ -1,0 +1,10 @@
+<?xml version="1.0">
+<studenttest>
+	<()>Pesho</>
+	<age>21</age>
+	<interests count="3">
+		<> </>
+		<interest>C#</instrest>
+		<> Javatest</>
+	</interests>
+</studenttest>

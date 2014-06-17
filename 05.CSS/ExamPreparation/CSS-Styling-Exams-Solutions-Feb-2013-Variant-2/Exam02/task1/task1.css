@@ -1,0 +1,124 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: #444444;
+}
+a.accordion-btn {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  border: 1px solid black;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #b1b1b1));
+  background-image: -webkit-linear-gradient(#eeeeee, #b1b1b1);
+  background-image: -moz-linear-gradient(#eeeeee, #b1b1b1);
+  background-image: -o-linear-gradient(#eeeeee, #b1b1b1);
+  background-image: linear-gradient(#eeeeee, #b1b1b1);
+}
+
+#wrapper {
+  font: 18px Helvetica, Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+  width: 960px;
+}
+
+ul.accordion {
+  width: 400px;
+  border: 1px solid black;
+  background: #aaaaaa;
+}
+ul.accordion li div.accordion-content {
+  display: none;
+  color: #444444;
+  padding: 5px;
+}
+ul.accordion li.current a {
+  border-bottom: none;
+}
+ul.accordion li.current div.accordion-content {
+  display: block;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 5px;
+  color: #5e5e5e;
+}
+
+table {
+  border: 1px solid black;
+  text-align: center;
+  margin: 20px auto;
+}
+table th, table tr, table td {
+  border: 1px solid black;
+  padding: 5px;
+}
+table th {
+  font-weight: bold;
+  background-color: #c9c9c9;
+}
+table td {
+  color: white;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #c7c7c7), color-stop(100%, #8d8d8d));
+  background-image: -webkit-linear-gradient(#c7c7c7, #8d8d8d);
+  background-image: -moz-linear-gradient(#c7c7c7, #8d8d8d);
+  background-image: -o-linear-gradient(#c7c7c7, #8d8d8d);
+  background-image: linear-gradient(#c7c7c7, #8d8d8d);
+}

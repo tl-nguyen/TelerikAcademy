@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+    <div id="slider"></div>
+    <button id="prevBtn">Prev</button>
+    <button id="nextBtn">Next</button>
+
+    <script>
+        $(document).ready(function () {
+            var slides = [
+                "<img width='100px' height='100px' alt='hello'/>",
+                "<p>Hello world</p>",
+                "<input type='text' value='hello'>",
+                "<h1>bla bla bla</h1>"
+            ];
+
+            var slider = $('#slider');
+            var currentSlideIndex = 1;
+            var prevBtn = $("#prevBtn");
+            var nextBtn = $("#nextBtn");
+
+            slider.html(slides[0]);
+
+            prevBtn.on("click", function () {
+                if (currentSlideIndex > 0) {
+                    currentSlideIndex -= 1;
+                } else {
+                    currentSlideIndex = slides.length - 1;
+                }
+
+                showSlide(slides[currentSlideIndex]);
+            });
+
+            nextBtn.on("click", function () {
+                if (currentSlideIndex < slides.length - 1) {
+                    currentSlideIndex += 1;
+                } else {
+                    currentSlideIndex = 0;
+                }
+
+                showSlide(slides[currentSlideIndex]);
+            });
+
+            function showSlide(slide) {
+                slider.fadeOut();
+
+                setTimeout(function () {
+                    slider.html(slide);
+                    slider.fadeIn();
+                }, 300)
+            }
+
+            setInterval(function () {
+                nextBtn.trigger("click");
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

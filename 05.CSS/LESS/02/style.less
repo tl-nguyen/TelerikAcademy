@@ -1,0 +1,34 @@
+@bg-color: yellow;
+@content-width: 500px;
+@default-pad-mag: 10px;
+
+@width: 100px;
+@height: 100px;
+@zoomed-width: @width * 2;
+@zoomed-height: @height * 2;
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+ul {
+    width: @content-width;
+    background: @bg-color;
+    margin: @default-pad-mag auto;
+    padding: @default-pad-mag;
+    & > li {
+        list-style: none;
+        display: inline-block;
+        img {
+            width: @width;
+            height: @height;
+            border: 1px solid black;
+            
+            &:hover {
+                width: @zoomed-width;
+                height: @zoomed-height;
+            }
+        }
+    }
+}

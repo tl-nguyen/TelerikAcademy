@@ -1,0 +1,154 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+body {
+  font-size: 14px;
+  font-family: 'Times New Roman';
+}
+
+#root {
+  width: 700px;
+}
+
+#previewer > div {
+  float: left;
+}
+
+#large {
+  text-align: center;
+  border: 2px solid #999999;
+  width: 500px;
+  height: 390px;
+}
+#large h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 10px;
+}
+#large img {
+  border: 2px solid #999999;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  margin: 15px;
+}
+
+#list {
+  border: 2px solid #999999;
+  width: 190px;
+  height: 395px;
+  overflow: hidden;
+}
+#list .title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: block;
+  text-align: center;
+}
+#list button {
+  font-size: 1.1rem;
+  width: 93px;
+  height: 50px;
+  border: 2px solid #999999;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #cccccc;
+}
+#list button:hover {
+  background-color: #e6e6e6;
+}
+#list ul {
+  text-align: center;
+  margin: 5px 0;
+  overflow: scroll;
+  height: 330px;
+}
+#list ul li {
+  border-bottom: 2px solid #999999;
+  margin: 1px;
+  padding: 5px;
+  height: 100px;
+}
+#list ul li strong {
+  font-weight: bold;
+}
+#list ul li strong:hover {
+  text-decoration: underline;
+}
+#list ul li img {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  padding: 5px;
+}
+#list ul li:hover {
+  background-color: #cccccc;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+#list ul li:hover img {
+  width: 80px;
+}

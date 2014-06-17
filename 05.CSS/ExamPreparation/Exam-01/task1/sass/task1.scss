@@ -1,0 +1,66 @@
+@import "base";
+
+$main_width: 960px;
+$main_font: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+$main_font_size: 16px;
+
+$sidebar_grad_from: #d29cfe;
+$sidebar_grad_to: #8a78ff;
+$sub_sidebar_bg: #b6aaff;
+$border_color: #6728c1;
+$anchor: #3e3681;
+
+#wrapper {
+	font: 16px $main_font;
+	width: $main_width;
+	
+}
+
+ul {
+	width: 250px;
+	@include border-radius(10px);
+}
+
+li {
+	font-size: 1rem;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+.sidebar {
+	@include background-image(linear-gradient($sidebar_grad_from, $sidebar_grad_to));
+	position: relative;
+	> li {
+		font-size: 1.5rem;
+		&:hover ul {
+			display: inline;
+			position: absolute;
+			left: 235px;
+		}
+	}
+	li {
+		padding: 5px 15px;
+		margin: 0 15px;
+		border-bottom: 1px solid $border_color;
+		&:last-child {
+			border: none;
+		}
+		&:hover {
+			border: 1px solid $border_color;
+		@include border-radius(5px);
+		}
+	}
+	ul {
+		display: none;
+		background: #b6aaff;
+		background-image: url(imgs/arrow.png);
+		background-repeat: no-repeat;
+		background-position: 10px 10px;
+	}
+}
+
+
+

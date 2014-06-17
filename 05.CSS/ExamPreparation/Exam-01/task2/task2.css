@@ -1,0 +1,138 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+body {
+  font: 16px Cambria, "Times New Roman", "Nimbus Roman No9 L", "Freeserif", Times, serif;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: black;
+}
+
+.tab-strip > .current {
+  background-image: linear-gradient(#ffffff, #ffffff);
+  -webkit-box-shadow: 1px 0 0 black;
+  -moz-box-shadow: 1px 0 0 black;
+  box-shadow: 1px 0 0 black;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  position: relative;
+}
+.tab-strip > .current > .tab-content {
+  display: block;
+}
+.tab-strip > li {
+  text-align: center;
+  width: 86px;
+  height: 40px;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #b0b0b0));
+  background-image: -webkit-linear-gradient(#ffffff, #b0b0b0);
+  background-image: -moz-linear-gradient(#ffffff, #b0b0b0);
+  background-image: -o-linear-gradient(#ffffff, #b0b0b0);
+  background-image: linear-gradient(#ffffff, #b0b0b0);
+  -webkit-box-shadow: 1px 1px 0 black;
+  -moz-box-shadow: 1px 1px 0 black;
+  box-shadow: 1px 1px 0 black;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background-color: white;
+  list-style: none;
+  float: left;
+}
+.tab-strip > li:last-child {
+  text-align: left;
+  margin: 0;
+  -webkit-box-shadow: -1px 1px 0 black;
+  -moz-box-shadow: -1px 1px 0 black;
+  box-shadow: -1px 1px 0 black;
+}
+.tab-strip > li:hover {
+  background-image: none;
+}
+.tab-strip > li .tab-content {
+  display: none;
+  position: fixed;
+  top: 50px;
+  left: 10px;
+}
+.tab-strip > li li {
+  position: relative;
+  list-style: disc;
+  left: 10px;
+}
+.tab-strip > li li li {
+  position: relative;
+  list-style: lower-alpha;
+}
+
+#wrapper {
+  width: 355px;
+  height: 250px;
+  border: 1px solid black;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}

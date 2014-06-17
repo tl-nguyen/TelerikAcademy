@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    
+    <script>
+        var divs = "";
+        for(var i = 0; i < 60; i++) {
+            divs += "<div>";
+        }
+        for(var i = 0; i < 60; i++) {
+            divs += "</div>";
+        }
+        var container = document.getElementsByTagName("body")[0].innerHTML = divs;
+    </script>
+</body>
+</html>
