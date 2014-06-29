@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <canvas id="canvas" width="1200" height="800"></canvas>
+
+    <script src="ShapeRender.js"></script>
+    <script>
+        var shapeRender = new ShapeRender('canvas');
+        shapeRender.drawRect(0, 0, 100, 100);
+        shapeRender.drawCircle(210, 100, 100);
+        shapeRender.drawLine(310, 50, 600, 50);
+    </script>
+</body>
+</html>
