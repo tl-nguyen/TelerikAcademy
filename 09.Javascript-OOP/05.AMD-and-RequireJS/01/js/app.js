@@ -3,7 +3,7 @@
 
 	require.config({
 		paths: {
-			"handlebars": "libs/handlebars.min",
+            "handlebars": "libs/handlebars.min",
             "controls": "controls",
             "comboBox": "comboBox",
             "data": "data"
@@ -15,28 +15,24 @@
         }
 	});
 
-	require(["data", "controls"], function (data, controls) {
+    require(["data", "controls"], function (data, controls) {
+        var comboBox1,
+            comboBox2,
+            container1,
+            container2,
+            frag;
 
-        var comboBox = new controls.ComboBox({people: data}),
-            comboBox2 = new controls.ComboBox({people: data}),
-            template = document.getElementById("comboBoxTemplate").innerHTML,
-            container, container2, title, frag;
+        comboBox1 = new controls.ComboBox({people: data});
+        container1 = comboBox1.render('comboBoxTemplate', 'person-item');
+
+        comboBox2 = new controls.ComboBox({people: data});
+        container2 = comboBox2.render('comboBoxTemplate2', 'person');
 
         frag = document.createDocumentFragment();
-        title = document.createElement('h2');
-        container = comboBox.render(template, 'person-item');
-        container2 = comboBox2.render(template, 'person-item');
-
-        title.innerText = 'Combo1';
-        frag.appendChild(title.cloneNode(true));
-        frag.appendChild(container);
-
-        title.innerText = 'Combo2';
-        frag.appendChild(title.cloneNode(true));
+        frag.appendChild(container1);
         frag.appendChild(container2);
 
         document.body.appendChild(frag);
-
-	});
+    });
 
 }());

@@ -5,17 +5,19 @@ define(['handlebars'], function (Handlebars) {
         selected = [];
 
     var ComboBox = function (data) {
-        this.data = data;
         id += 1;
+        this.data = data;
         this.id = id;
         selected[this.id] = null;
     };
 
-    ComboBox.prototype.render = function (templateString, itemClass) {
-        var template,
+    ComboBox.prototype.render = function (templateId, itemClass) {
+        var templateString,
+            template,
             resultHTML,
             container;
 
+        templateString = document.getElementById(templateId).innerHTML;
         template = Handlebars.compile(templateString);
 
         resultHTML = template(this.data);
@@ -28,25 +30,25 @@ define(['handlebars'], function (Handlebars) {
         return container;
     };
 
-    var eventhandlingSetup = function (container, comboBoxItemClass, comboId) {
-        var items = container.getElementsByClassName(comboBoxItemClass);
+    var eventhandlingSetup = function (container, itemClass, generatedId) {
+        var items = container.getElementsByClassName(itemClass);
 
         for (var i = 0, len =  items.length; i < len; i += 1) {
             //initial set first item to display only
             if (i === 0) {
                 items[i].style.display = 'block';
-                selected[comboId] = items[i];
+                selected[generatedId] = items[i];
             } else {
                 items[i].style.display = 'none';
             }
 
             items[i].addEventListener('click', function () {
-                if (selected[comboId] === this) {
-                    selected[comboId] = null;
+                if (selected[generatedId] === this) {
+                    selected[generatedId] = null;
                     revealAll();
-                } else if (selected[comboId] === null) {
-                    selected[comboId] = this;
-                    hideOthers(selected[comboId]);
+                } else if (selected[generatedId] === null) {
+                    selected[generatedId] = this;
+                    hideOthers(selected[generatedId]);
                 }
             });
         }
