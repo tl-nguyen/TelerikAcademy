@@ -35,7 +35,7 @@ define(['handlebars'], function (Handlebars) {
             //initial set first item to display only
             if (i === 0) {
                 items[i].style.display = 'block';
-                selected[id] = items[i];
+                selected[comboId] = items[i];
             } else {
                 items[i].style.display = 'none';
             }
@@ -48,7 +48,7 @@ define(['handlebars'], function (Handlebars) {
                     selected[comboId] = this;
                     hideOthers(selected[comboId]);
                 }
-            })
+            });
         }
 
         function revealAll() {
