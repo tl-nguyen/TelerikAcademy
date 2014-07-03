@@ -5,6 +5,7 @@
 		paths: {
 			"handlebars": "libs/handlebars.min",
             "controls": "controls",
+            "comboBox": "comboBox",
             "data": "data"
 		},
         shim: {
@@ -14,9 +15,10 @@
         }
 	});
 
-	require(["data", "controls"], function (people, controls) {
-        var comboBox = new controls.ComboBox({people: people}),
-            comboBox2 = new controls.ComboBox({people: people}),
+	require(["data", "controls"], function (data, controls) {
+
+        var comboBox = new controls.ComboBox({people: data}),
+            comboBox2 = new controls.ComboBox({people: data}),
             template = document.getElementById("comboBoxTemplate").innerHTML,
             container, container2, title, frag;
 
@@ -34,5 +36,7 @@
         frag.appendChild(container2);
 
         document.body.appendChild(frag);
+
 	});
+
 }());
