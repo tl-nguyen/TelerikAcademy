@@ -20,9 +20,7 @@
             template = document.getElementById("comboBoxTemplate").innerHTML,
             container;
 
-        container = comboBox.render(template);
-
-        controls.handlerSetup(container, 'person-item');
+        container = comboBox.render(template, 'person-item');
 
         document.body.appendChild(container);
 	});

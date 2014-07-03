@@ -9,7 +9,7 @@ define(["handlebars"], function (Handlebars) {
         };
 
         ComboBox.prototype = {
-            render: function (templateString) {
+            render: function (templateString, itemClass) {
                 var template,
                     resultHTML,
                     container;
@@ -21,6 +21,8 @@ define(["handlebars"], function (Handlebars) {
                 container = document.createElement('div');
                 container.innerHTML = resultHTML;
 
+                eventhandlingSetup(container, itemClass);
+
                 return container;
             }
         };
@@ -28,8 +30,8 @@ define(["handlebars"], function (Handlebars) {
         return ComboBox;
     }());
 
-    var handlerSetup = function (el, comboBoxItemClass) {
-        var items = el.getElementsByClassName(comboBoxItemClass);
+    var eventhandlingSetup = function (container, comboBoxItemClass) {
+        var items = container.getElementsByClassName(comboBoxItemClass);
 
         for (var i = 0, len =  items.length; i < len; i += 1) {
             //initial set first item to display only
@@ -69,7 +71,6 @@ define(["handlebars"], function (Handlebars) {
     };
 
     return {
-        ComboBox: ComboBox,
-        handlerSetup: handlerSetup
+        ComboBox: ComboBox
     }
 });
