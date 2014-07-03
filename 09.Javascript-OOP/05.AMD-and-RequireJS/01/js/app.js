@@ -15,13 +15,24 @@
 	});
 
 	require(["data", "controls"], function (people, controls) {
-
         var comboBox = new controls.ComboBox({people: people}),
+            comboBox2 = new controls.ComboBox({people: people}),
             template = document.getElementById("comboBoxTemplate").innerHTML,
-            container;
+            container, container2, title, frag;
 
+        frag = document.createDocumentFragment();
+        title = document.createElement('h2');
         container = comboBox.render(template, 'person-item');
+        container2 = comboBox2.render(template, 'person-item');
 
-        document.body.appendChild(container);
+        title.innerText = 'Combo1';
+        frag.appendChild(title.cloneNode(true));
+        frag.appendChild(container);
+
+        title.innerText = 'Combo2';
+        frag.appendChild(title.cloneNode(true));
+        frag.appendChild(container2);
+
+        document.body.appendChild(frag);
 	});
 }());

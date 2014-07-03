@@ -1,11 +1,14 @@
 define(["handlebars"], function (Handlebars) {
     'use strict';
 
-    var selected = null;
+    var id = 0,
+        selected = [];
 
     var ComboBox = (function () {
         var ComboBox = function (data) {
             this.data = data;
+            this.id = ++id;
+            selected[this.id] = null;
         };
 
         ComboBox.prototype = {
@@ -21,7 +24,7 @@ define(["handlebars"], function (Handlebars) {
                 container = document.createElement('div');
                 container.innerHTML = resultHTML;
 
-                eventhandlingSetup(container, itemClass);
+                eventhandlingSetup(container, itemClass, this.id);
 
                 return container;
             }
@@ -30,25 +33,25 @@ define(["handlebars"], function (Handlebars) {
         return ComboBox;
     }());
 
-    var eventhandlingSetup = function (container, comboBoxItemClass) {
+    var eventhandlingSetup = function (container, comboBoxItemClass, comboId) {
         var items = container.getElementsByClassName(comboBoxItemClass);
 
         for (var i = 0, len =  items.length; i < len; i += 1) {
             //initial set first item to display only
             if (i === 0) {
                 items[i].style.display = 'block';
-                selected = items[i];
+                selected[id] = items[i];
             } else {
                 items[i].style.display = 'none';
             }
 
             items[i].addEventListener('click', function () {
-                if (selected === this) {
-                    selected = null;
+                if (selected[comboId] === this) {
+                    selected[comboId] = null;
                     revealAll();
-                } else if (selected === null) {
-                    selected = this;
-                    hideOthers(selected);
+                } else if (selected[comboId] === null) {
+                    selected[comboId] = this;
+                    hideOthers(selected[comboId]);
                 }
             })
         }
