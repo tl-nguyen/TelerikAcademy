@@ -1,17 +1,16 @@
 define([], function () {
-
     var Student;
 
-    Student = (function () {
-
-        function Student(params) {
-            this.name = params.name;
-            this.exam = params.exam;
-            this.homework = params.homework;
-            this.attendance = params.attendance;
-            this.teamwork = params.teamwork;
-            this.bonus = params.bonus;
-        }
+    Student = (function() {
+        function Student(data) {
+            this.name = data.name;
+            this.exam = data.exam;
+            this.homework = data.homework;
+            this.attendance = data.attendance;
+            this.teamwork = data.teamwork;
+            this.bonus = data.bonus;
+            this.totalScore = 0;
+        };
 
         return Student;
     }());
