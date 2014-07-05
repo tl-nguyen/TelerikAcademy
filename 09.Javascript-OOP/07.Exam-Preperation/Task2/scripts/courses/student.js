@@ -10,7 +10,7 @@ define([], function () {
             this.teamwork = data.teamwork;
             this.bonus = data.bonus;
             this.totalScore = 0;
-        };
+        }
 
         return Student;
     }());
