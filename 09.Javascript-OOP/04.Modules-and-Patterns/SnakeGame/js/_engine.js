@@ -43,7 +43,7 @@ var game = game || {};
 
                 handleCollision.call(this);
 
-                setTimeout(gameLoop.bind(this), 1000 /  (20 +  Math.floor(score / 5)));
+                setTimeout(gameLoop.bind(this), 1000 /  (15 +  score));
             }
         }
 
@@ -114,13 +114,13 @@ var game = game || {};
             document.addEventListener('keydown', function(e){
                 var key = e.which;
 
-                if (key == "37" && snake.direction != "right") {
+                if (key === 37 && snake.direction !== "right") {
                     snake.direction = "left";
-                } else if(key == "38" && snake.direction != "down") {
+                } else if(key === 38 && snake.direction !== "down") {
                     snake.direction = "up";
-                } else if(key == "39" && snake.direction != "left") {
+                } else if(key === 39 && snake.direction !== "left") {
                     snake.direction = "right";
-                } else if(key == "40" && snake.direction != "up") {
+                } else if(key === 40 && snake.direction !== "up") {
                     snake.direction = "down";
                 }
 

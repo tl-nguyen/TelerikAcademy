@@ -35,17 +35,11 @@ define(['courses/student'], function (Student) {
         };
         
         var getTop = function (numberOfTop) {
-            var topStudents = [];
-
             if (!(numberOfTop >= 0 && numberOfTop < this.students.length)) {
                 throw new Error('numberOfTop must be >= 0 and < number of students');
             }
 
-            for (var i = 0; i < numberOfTop; i += 1) {
-                topStudents.push(this.students[i]);
-            }
-
-            return topStudents;
+            return this.students.slice(0, numberOfTop);
         };
 
         var sortBy = function (type) {

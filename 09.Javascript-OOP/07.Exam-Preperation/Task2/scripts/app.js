@@ -28,17 +28,15 @@
 
       jsOopCourse.calculateResults();
 
-//      console.log(JSON.stringify(jsOopCourse.studentsResults));
-
       var topByExam = jsOopCourse
         .getTopStudentsByExam(5);
 
-       console.log(JSON.stringify(topByExam));
+       console.log(topByExam);
 
       var topByTotalScore = jsOopCourse
         .getTopStudentsByTotalScore(5);
 
-        console.log(JSON.stringify(topByTotalScore));
+        console.log(topByTotalScore);
 
     });
 }());
