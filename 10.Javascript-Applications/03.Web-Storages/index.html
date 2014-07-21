@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Number Guessing Game</title>
+    <script src="js/libs/require.js" data-main="js/app"></script>
+    <style>
+        #game {
+            font-size: 1.3rem;
+            text-align: center;
+            width: 600px;
+            margin: 0 auto;
+            border: 1px solid black;
+            padding: 20px;
+        }
+
+        #info {
+            font-size: 1.5rem;
+            color: orange;
+            margin: 10px 0;
+        }
+
+        #current {
+            font-size: 1.5rem;
+            color: red;
+            margin: 10px 0;
+        }
+
+        #top {
+            font-size: 3rem;
+            color: green;
+            border: 2px solid #ccc;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="game">
+        <h1>Simple Number Guessing Game</h1>
+        <label for="number">Guess a number(the first digit can't be 0): </label>
+        <input id="number" type="text" size="4" maxlength="4"/>
+        <button id="check">Check</button>
+        <button id="newGame">New Game</button>
+        <div id="info"></div>
+        <div id="current"></div>
+        <h2>score list</h2>
+        <div id="top"></div>
+    </div>
+</body>
+</html>
