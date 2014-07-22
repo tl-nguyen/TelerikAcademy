@@ -27,7 +27,7 @@ define(['underscore'], function (_) {
                             })
                             .value().length;
 
-        return validDigitsCount === 4;
+        return (validDigitsCount === 4);
     };
 
     var getUserName = function () {

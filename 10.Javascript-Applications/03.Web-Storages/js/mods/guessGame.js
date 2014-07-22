@@ -1,5 +1,4 @@
 define(['gameUI', 'storageAPI', 'underscore'], function (gameUI, storageAPI, _) {
-
     var GuessGame,
         generatedNumber,
         inputNum,
@@ -56,8 +55,6 @@ define(['gameUI', 'storageAPI', 'underscore'], function (gameUI, storageAPI, _) 
                     gameUI.appendCurrent('entered: ' + inputNum.value + ', rams: ' + rams + ', sheeps: ' + sheeps);
                     score -= 2;
                 }
-
-                console.log(generatedNumber);
             } else {
                 gameUI.setInfo('invalid number, please enter again');
             }
@@ -67,8 +64,6 @@ define(['gameUI', 'storageAPI', 'underscore'], function (gameUI, storageAPI, _) 
             var username = gameUI.getUserName();
 
             storageAPI.saveUser(username, score);
-
-
             disableCheckBtn();
         };
 
