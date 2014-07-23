@@ -27,7 +27,25 @@ define(['underscore'], function (_) {
                             })
                             .value().length;
 
-        return (validDigitsCount === 4);
+        return (validDigitsCount === 4 && !(areDuplicatedDigits(num)));
+    };
+
+    var isValidDigit = function (digit, index) {
+        if (index === 0) {
+            return (digit >= 1 && digit <= 9);
+        } else {
+            return (digit >= 0 && digit <= 9);
+        }
+    };
+
+    var areDuplicatedDigits = function (num) {
+        for (var i = 0; i < 4; i += 1) {
+            if (num.indexOf(num[i]) >= 0 && num.indexOf(num[i]) !== i) {
+                return true;
+            }
+        }
+
+        return false;
     };
 
     var getUserName = function () {
@@ -37,14 +55,6 @@ define(['underscore'], function (_) {
     var addToLeaderBoard = function (value, key) {
         top.innerHTML += '<p>' + key + ' : ' + value + '</p>';
     };
-
-    function isValidDigit(digit, index) {
-        if (index === 0) {
-            return (digit >= 1 && digit <= 9);
-        } else {
-            return (digit >= 0 && digit <= 9);
-        }
-    }
 
     return {
         inputNum: inputNum,

@@ -29,10 +29,24 @@ define(['gameUI', 'storageAPI', 'underscore'], function (gameUI, storageAPI, _) 
         };
 
         var makeGuessNumber = function () {
-            return makeRandomDigit(true) +
-                    makeRandomDigit() +
-                    makeRandomDigit() +
-                    makeRandomDigit();
+            var digits = [],
+                resultNumber = '',
+                currentDigit,
+                i;
+
+            for (i = 0; i < 4; i += 1) {
+                do {
+                    currentDigit = (i === 0) ? makeRandomDigit(true) : makeRandomDigit();
+                } while (_.contains(digits, currentDigit));
+
+                digits[i] = currentDigit;
+            }
+
+            _.each(digits, function (digit) {
+                resultNumber += digit;
+            });
+
+            return resultNumber;
         };
 
         var disableCheckBtn = function () {
