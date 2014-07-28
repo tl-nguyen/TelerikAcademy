@@ -8,6 +8,7 @@ define(['mustache'], function (Mustache) {
     };
 
     var loadChatUI = function (data, nickname) {
+
         var template =
                 '<h1>Hello ' + nickname + '</h1>' +
                 '<button id="logoutBtn">Log Out</button>' +

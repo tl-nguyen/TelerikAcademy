@@ -4,16 +4,11 @@ define(['sammy', 'controllers'], function (sammy, controllers) {
     url = 'http://crowd-chat.herokuapp.com/';
     selector = '#main-content';
 
+    controller = controllers.get(url, selector);
 
     app = sammy(selector, function () {
-        controller = controllers.get(url, selector);
-
-        this.get("#/login", function (ctx) {
-            controller.loadLoginUI(ctx);
-        });
-        this.get("#/chat", function (ctx) {
-            controller.loadChatUI(ctx);
-        });
+        this.get("#/login", controller.loadLoginUI.bind(controller));
+        this.get("#/chat", controller.loadChatUI.bind(controller));
     });
 
     return {

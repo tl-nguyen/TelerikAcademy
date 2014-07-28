@@ -1,6 +1,35 @@
 define(['persisters', 'ui', 'underscore'], function (persisters, ui, _) {
     var Controller, context, chatInterVal;
 
+    function fetchPosts() {
+        var self = this,
+            wrapper = $(this.selector);
+
+        this.persister.chatRoom.getPosts()
+            .then(function (data) {
+                var chatUIHtml;
+
+                data = data.slice(-30);
+
+                data = _.chain(data)
+                    .map(function (chat) {
+                        //remove stupid &nbsp; hack
+                        while(chat.text.indexOf('&nbsp;') >= 0) {
+                            chat.text = chat.text.replace('&nbsp;', ' ');
+                        }
+
+                        return chat;
+                    })
+                    .reverse()
+                    .value();
+
+                chatUIHtml = ui.chatUI(data, self.persister.nickname());
+                wrapper.html(chatUIHtml);
+            }, function (error) {
+                console.log(error);
+            });
+    }
+
     Controller = (function () {
         function Controller(rootUrl, selector) {
             this.persister = persisters.get(rootUrl);
@@ -10,7 +39,6 @@ define(['persisters', 'ui', 'underscore'], function (persisters, ui, _) {
 
         Controller.prototype.loadChatUI = function (ctx) {
             context = ctx;
-
             clearInterval(chatInterVal);
 
             if(!this.persister.isUserLoggedIn()) {
@@ -18,30 +46,13 @@ define(['persisters', 'ui', 'underscore'], function (persisters, ui, _) {
                 return;
             }
 
-            var self = this,
-                wrapper = $(this.selector);
-
-            fetchPosts();
-            chatInterVal = setInterval(fetchPosts, 6000);
-
-            function fetchPosts() {
-                self.persister.chatRoom.getPosts()
-                    .then(function (data) {
-                        data = data.slice(-30);
-
-                        data = _.chain(data)
-                            .reverse()
-                            .value();
-
-                        var chatUIHtml = ui.chatUI(data, self.persister.nickname());
-                        wrapper.html(chatUIHtml);
-                    }, function (error) {
-                        console.log(error);
-                    });
-            }
+            fetchPosts.call(this);
+            chatInterVal = setInterval(fetchPosts.bind(this), 15000);
         };
 
         Controller.prototype.loadLoginUI = function (ctx) {
+            var loginFormHtml;
+
             context = ctx;
             clearInterval(chatInterVal);
 
@@ -49,7 +60,7 @@ define(['persisters', 'ui', 'underscore'], function (persisters, ui, _) {
                 ctx.redirect('#/chat');
             }
 
-            var loginFormHtml = ui.loginForm();
+            loginFormHtml = ui.loginForm();
 
             $(this.selector).html(loginFormHtml);
         };
