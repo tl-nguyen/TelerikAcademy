@@ -2,26 +2,29 @@
     'use strict';
 
     require.config({
-        baseUrl: '/10.SPA-Applications-and-App-Architecture/',
         paths: {
-            'mocha': 'CrowdChatTests/libs/mocha',
-            'chai': 'CrowdChatTests/libs/chai',
-            'controllers': 'CrowdChat/js/mods/controllers',
-            'persisters': 'CrowdChat/js/mods/persisters',
-            'httpReq': 'CrowdChat/js/mods/httpReq',
-            'ui': 'CrowdChat/js/mods/ui'
+            mocha: 'libs/mocha',
+            chai: 'libs/chai',
+            //libs
+            underscore: '../CrowdChat/js/libs/underscore',
+            q: '../CrowdChat/js/libs/q',
+            jquery: '../CrowdChat/js/libs/jquery',
+            mustache: '../CrowdChat/js/libs/mustache',
+            sammy: '../CrowdChat/js/libs/sammy',
+            //modules for tests
+            controllers: '../CrowdChat/js/mods/controllers',
+            persisters: '../CrowdChat/js/mods/persisters',
+            httpReq: '../CrowdChat/js/mods/httpReq',
+            ui: '../CrowdChat/js/mods/ui'
         },
         shim: {
-            'underscore': {
-                exports: '_'
-            },
             'mocha': {
                 exports: 'mocha'
             }
         }
     });
 
-    require(['mocha'], function(mocha){
+    require(['mocha', 'controllers'], function(mocha, c){
 
         mocha.setup('bdd');
 
