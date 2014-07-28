@@ -2,20 +2,22 @@ define(['persisters', 'ui', 'underscore'], function (persisters, ui, _) {
     var Controller, context, chatInterVal;
 
     function fetchPosts() {
-        var self = this,
-            wrapper = $(this.selector);
+        var wrapper = $(this.selector);
 
         this.persister.chatRoom.getPosts()
             .then(function (data) {
-                var chatUIHtml;
+                var chatUIHtml, chatDiv;
 
                 data = data.slice(-30);
 
                 data = _.chain(data)
                     .map(function (chat) {
                         //remove stupid &nbsp; hack
-                        while(chat.text.indexOf('&nbsp;') >= 0) {
+                        while(chat.text.indexOf('&nbsp;') >= 0 ||
+                                chat.by.indexOf('&nbsp;') >= 0) {
+
                             chat.text = chat.text.replace('&nbsp;', ' ');
+                            chat.by = chat.by.replace('&nbsp;', ' ');
                         }
 
                         return chat;
@@ -23,8 +25,10 @@ define(['persisters', 'ui', 'underscore'], function (persisters, ui, _) {
                     .reverse()
                     .value();
 
-                chatUIHtml = ui.chatUI(data, self.persister.nickname());
-                wrapper.html(chatUIHtml);
+                chatUIHtml = ui.chatUI(data);
+                wrapper.find('#chats').remove();
+                chatDiv = $('<div id="chats">').html(chatUIHtml);
+                wrapper.find('#chatHead').append(chatDiv);
             }, function (error) {
                 console.log(error);
             });
@@ -46,8 +50,17 @@ define(['persisters', 'ui', 'underscore'], function (persisters, ui, _) {
                 return;
             }
 
+            var wrapper = $(this.selector),
+                chatHead = $('<div id="chatHead">')
+                    .html(ui.chatHead(this.persister.nickname())),
+                sendForm = $('<div id="sendForm">')
+                    .html(ui.sendForm());
+
+            wrapper.html(chatHead);
+            wrapper.append(sendForm);
+
             fetchPosts.call(this);
-            chatInterVal = setInterval(fetchPosts.bind(this), 15000);
+            chatInterVal = setInterval(fetchPosts.bind(this), 3000);
         };
 
         Controller.prototype.loadLoginUI = function (ctx) {
@@ -89,7 +102,8 @@ define(['persisters', 'ui', 'underscore'], function (persisters, ui, _) {
 
                 self.persister.chatRoom.sendPost(data)
                     .then(function () {
-                        self.loadChatUI(context);
+                        fetchPosts.call(self);
+                        wrapper.find('#message').val('');
                     }, function (error) {
                         console.log(error);
                     });

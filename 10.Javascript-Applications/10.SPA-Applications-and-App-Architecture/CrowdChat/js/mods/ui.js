@@ -7,25 +7,32 @@ define(['mustache'], function (Mustache) {
 
     };
 
-    var loadChatUI = function (data, nickname) {
+    var loadChatHeader = function (nickname) {
+        return '<h1>Hello ' + nickname + '</h1>' +
+                '<button id="logoutBtn">Log Out</button>';
+    };
 
+    var loadChatUI = function (data) {
         var template =
-                '<h1>Hello ' + nickname + '</h1>' +
-                '<button id="logoutBtn">Log Out</button>' +
-                '<ul id="chats">' +
+                '<ul>' +
                     '{{#.}}' +
                         '<li class="chat-message"><strong>{{by}} </strong>: "{{text}}"</li>' +
                     '{{/.}}' +
-                '</ul>' +
-                '<label for="message">Say Something: </label>' +
-                '<input type="text" id="message">' +
-                '<button id="sendBtn">SEND</button>';
+                '</ul>';
 
         return Mustache.render(template, data);
     };
 
+    var loadSendForm = function () {
+        return '<label for="message">Say Something: </label>' +
+                '<input type="text" id="message">' +
+                '<button id="sendBtn">SEND</button>';
+    };
+
     return {
         loginForm: loadLoginForm,
-        chatUI: loadChatUI
+        chatUI: loadChatUI,
+        sendForm: loadSendForm,
+        chatHead: loadChatHeader
     }
 });
