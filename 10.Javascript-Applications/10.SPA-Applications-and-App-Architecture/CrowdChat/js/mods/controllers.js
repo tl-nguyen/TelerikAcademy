@@ -8,7 +8,7 @@ define(['persisters', 'ui', 'underscore'], function (persisters, ui, _) {
             .then(function (data) {
                 var chatUIHtml, chatDiv;
 
-                data = data.slice(-30);
+                data = data.slice(-50);
 
                 data = _.chain(data)
                     .map(function (chat) {
@@ -60,7 +60,7 @@ define(['persisters', 'ui', 'underscore'], function (persisters, ui, _) {
             wrapper.append(sendForm);
 
             fetchPosts.call(this);
-            chatInterVal = setInterval(fetchPosts.bind(this), 3000);
+            chatInterVal = setInterval(fetchPosts.bind(this), 5000);
         };
 
         Controller.prototype.loadLoginUI = function (ctx) {

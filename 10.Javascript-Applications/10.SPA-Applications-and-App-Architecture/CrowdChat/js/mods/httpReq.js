@@ -6,6 +6,7 @@ define(['jquery', 'q'], function ($, Q) {
             url: url,
             type: 'GET',
             contentType: 'application/json',
+            timeout: 5000,
             success: function (data) {
                 deferred.resolve(data);
             },
@@ -25,6 +26,7 @@ define(['jquery', 'q'], function ($, Q) {
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
+            timeout: 5000,
             success: function (data) {
                 deferred.resolve(data);
             },

@@ -2,6 +2,7 @@ define(['httpReq'], function (httpReq) {
     var nickname = localStorage.getItem("nickname");
 
     function saveNickName(inputNickname) {
+        inputNickname = inputNickname !== '' ? inputNickname : 'Anonymous';
         localStorage.setItem("nickname", inputNickname);
         nickname = inputNickname;
     }
