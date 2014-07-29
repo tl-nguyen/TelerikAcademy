@@ -20,6 +20,9 @@
         shim: {
             'mocha': {
                 exports: 'mocha'
+            },
+            underscore: {
+                exports: '_'
             }
         }
     });

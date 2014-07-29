@@ -6,9 +6,9 @@ define(['persisters', 'ui', 'underscore'], function (persisters, ui, _) {
 
         this.persister.chatRoom.getPosts()
             .then(function (data) {
-                var chatUIHtml, chatDiv;
+                var chatUIHtml, chatDiv, scroller;
 
-                data = data.slice(-50);
+                data = data.slice(-1000);
 
                 data = _.chain(data)
                     .map(function (chat) {
@@ -22,13 +22,17 @@ define(['persisters', 'ui', 'underscore'], function (persisters, ui, _) {
 
                         return chat;
                     })
-                    .reverse()
                     .value();
 
                 chatUIHtml = ui.chatUI(data);
                 wrapper.find('#chats').remove();
                 chatDiv = $('<div id="chats">').html(chatUIHtml);
                 wrapper.find('#chatHead').append(chatDiv);
+
+                //jquery way doesn't work properly with this hack
+//                chatDiv.scrollTop(chatDiv.height());
+                scroller = document.getElementById('chats');
+                scroller.scrollTop = scroller.scrollHeight;
             }, function (error) {
                 console.log(error);
             });
