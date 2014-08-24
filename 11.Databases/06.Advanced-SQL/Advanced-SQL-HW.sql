@@ -1,4 +1,5 @@
 USE TelerikAcademy
+GO
 
 -- 1. Write a SQL query to find the names and salaries of the employees that take the minimal salary in the company. Use a nested SELECT statement.
 SELECT FirstName, LastName, MiddleName, Salary
@@ -202,7 +203,7 @@ ALTER TABLE Users
 DROP CONSTRAINT UK_UserNames
 
 INSERT INTO Users(Username, Password, FullName, LastLogin)
-	SELECT DISTINCT LOWER(LEFT(FirstName, 1) + LastName), 
+	SELECT LOWER(LEFT(FirstName, 1) + LastName), 
 			LOWER(LEFT(FirstName, 1) + LastName),
 			FirstName + ' ' + LastName,
 			NULL
@@ -302,8 +303,24 @@ DELETE WorkHours
 
 -- 30. Start a database transaction, delete all employees from the 'Sales' department along with all dependent records from the pother tables.
 -- At the end rollback the transaction.
+BEGIN TRAN
+ALTER TABLE Departments
+	DROP CONSTRAINT FK_Departments_Employees
+GO
+
+ALTER TABLE WorkHours
+	DROP CONSTRAINT FK_Employees_WorkHours
+GO
+
+DELETE Employees
+WHERE DepartmentID = (SELECT DepartmentID FROM Departments WHERE Name = 'Sales')
+GO
+ROLLBACK TRAN
 
 -- 31. Start a database transaction and drop the table EmployeesProjects. Now how you could restore back the lost table data?
+BEGIN TRANSACTION
+DROP TABLE EmployeesProjects
+ROLLBACK TRANSACTION
 
 -- 32. Find how to use temporary tables in SQL Server.
 -- Using temporary tables backup all records from EmployeesProjects and restore them back after dropping and re-creating the table.
