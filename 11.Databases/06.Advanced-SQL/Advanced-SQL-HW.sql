@@ -301,6 +301,59 @@ DELETE WorkHours
 	WHERE [Hours] < 4
 
 
+CREATE TABLE WorkHoursLogs(
+	WorkHoursLogID int IDENTITY PRIMARY KEY,
+	WorkHourID int NOT NULL,
+    EmployeeID int NOT NULL,
+    [Date] DATETIME NOT NULL,
+    Task nvarchar(256) NOT NULL,
+    [Hours] int NOT NULL,
+    Comments nvarchar(256),
+	Command nvarchar(10),
+	[Status] nvarchar(5)
+)
+GO
+
+-- Update trigger
+CREATE TRIGGER tr_updateWorkHours ON WorkHours FOR UPDATE
+AS
+	INSERT INTO WorkHoursLogs (WorkHourID, EmployeeID, [Date], Task, [Hours], Comments, Command, [Status])
+	SELECT WorkHourID, EmployeeID, [Date], Task, [Hours], Comments, 'update', 'old'
+		FROM deleted
+
+	INSERT INTO WorkHoursLogs (WorkHourID, EmployeeID, [Date], Task, [Hours], Comments, Command, [Status])
+	SELECT WorkHourID, EmployeeID, [Date], Task, [Hours], Comments, 'update', 'new'
+		FROM inserted
+GO
+
+-- Insert trigger
+CREATE TRIGGER tr_insertWorkHours ON WorkHours FOR INSERT
+AS
+	INSERT INTO WorkHoursLogs (WorkHourID, EmployeeID, [Date], Task, [Hours], Comments, Command, [Status])
+	SELECT WorkHourID, EmployeeID, [Date], Task, [Hours], Comments, 'insert', 'new'
+		FROM inserted
+GO
+
+-- Delete trigger
+CREATE TRIGGER tr_deleteWorkHours ON WorkHours FOR DELETE
+AS
+	INSERT INTO WorkHoursLogs (WorkHourID, EmployeeID, [Date], Task, [Hours], Comments, Command, [Status])
+	SELECT WorkHourID, EmployeeID, [Date], Task, [Hours], Comments, 'delete', 'old'
+		FROM deleted
+GO
+
+UPDATE WorkHours
+	SET Comments = 'Lazy dude'
+	WHERE [Hours] < 8
+GO
+
+INSERT INTO WorkHours(EmployeeId, [Date], Task, [Hours])
+    VALUES (8, GETDATE(), 'Sleep', 2)
+GO
+
+DELETE WorkHours
+	WHERE [Hours] < 8
+
 -- 30. Start a database transaction, delete all employees from the 'Sales' department along with all dependent records from the pother tables.
 -- At the end rollback the transaction.
 BEGIN TRAN
@@ -324,3 +377,5 @@ ROLLBACK TRANSACTION
 
 -- 32. Find how to use temporary tables in SQL Server.
 -- Using temporary tables backup all records from EmployeesProjects and restore them back after dropping and re-creating the table.
+-- Answer:
+-- CREATE TABLE #LocalTempTable(....)
