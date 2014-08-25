@@ -200,11 +200,31 @@ SELECT * FROM dbo.ufn_comprisedNamesFromEmployeesAndTowns('oistmiahf')
 GO
 
 -- 8. Using database cursor write a T-SQL script that scans all employees and their addresses and prints all pairs of employees that live in the same town.
+DECLARE empCursor CURSOR READ_ONLY FOR
+	SELECT e1.FirstName + ' ' + e1.LastName AS Employee1Name, e2.FirstName + ' ' + e2.LastName AS Employee2Name, t1.Name AS TownName
+	FROM Employees e1, Employees e2, Addresses a1, Addresses a2, Towns t1, Towns t2
+	WHERE e1.AddressID = a1.AddressID AND a1.TownID = t1.TownID AND
+			e2.AddressID = a2.AddressID AND a2.TownID = t2.TownID AND
+			t1.TownID = t2.TownID AND e1.EmployeeID <> e2.EmployeeID
+
+	OPEN empCursor
+	DECLARE @firstEmpName char(50), @secondEmpName char(50), @townName char(50)
+	FETCH NEXT FROM empCursor INTO @firstEmpName, @secondEmpName, @townName
+
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		PRINT @firstEmpName + ' ' + @secondEmpName + ' => ' + @townName
+		FETCH NEXT FROM empCursor INTO @firstEmpName, @secondEmpName, @townName
+	END
+
+	CLOSE empCursor
+	DEALLOCATE empCursor
 
 -- 9. * Write a T-SQL script that shows for each town a list of all employees that live in it.
 -- Sample output: 
 --		Sofia -> Svetlin Nakov, Martin Kulov, George Denchev 
 --		Ottawa -> Jose Saraiva …
+
 
 -- 10. Define a .NET aggregate function StrConcat that takes as input a sequence of strings and return a single string that consists of the input strings separated by ','.
 -- For example the following SQL statement should return a single string:   SELECT StrConcat(FirstName + ' ' + LastName) FROM Employees
