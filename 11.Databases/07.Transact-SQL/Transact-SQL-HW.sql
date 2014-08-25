@@ -91,6 +91,32 @@ EXEC usp_oneMonthInterestSumCalculator 9, 0.5
 GO
 
 -- 5. Add two more stored procedures WithdrawMoney (AccountId, money) and DepositMoney (AccountId, money) that operate in transactions.
+CREATE PROC usp_withdraw (@accountID int, @amount money)
+AS
+BEGIN
+	BEGIN TRAN
+		UPDATE Accounts
+		SET Balance = Balance - @amount
+		WHERE AccountID = @accountID AND Balance - @amount >= 0
+	COMMIT TRAN
+END
+GO
+
+CREATE PROC usp_deposit (@accountID int, @amount money)
+AS
+BEGIN
+	BEGIN TRAN
+		UPDATE Accounts
+		SET Balance = Balance + @amount
+		WHERE AccountID = @accountID
+	COMMIT TRAN
+END
+GO
+
+EXEC usp_withdraw 1, 10
+EXEC usp_withdraw 1, 20
+EXEC usp_deposit 1, 200
+GO
 
 -- 6. Create another table – Logs(LogID, AccountID, OldSum, NewSum).
 -- Add a trigger to the Accounts table that enters a new entry into the Logs table every time the sum on an account changes. 
@@ -107,23 +133,71 @@ GO
 
 CREATE TRIGGER tr_balanceChanges ON Accounts FOR UPDATE
 AS
-	DECLARE @oldSum money, @newSum money, @accountId int
-	SELECT @oldSum = Balance FROM deleted WHERE Balance IS NOT NULL
-	SELECT @newSum = Balance FROM inserted WHERE Balance IS NOT NULL
-	SELECT @accountId = AccountID FROM inserted
-
 	INSERT INTO Logs (AccountID, OldSum, NewSum)
-	VALUES (@accountId, @oldSum, @newSum)
+	SELECT n.AccountID, o.Balance, n.Balance
+	FROM inserted n, deleted o
+	WHERE n.AccountID = o.AccountID
 GO
 
 UPDATE Accounts
 SET Balance = 20
-WHERE AccountID = 1
+WHERE AccountID = 2
 GO
 
 -- 7. Define a function in the database TelerikAcademy that returns all Employee's names (first or middle or last name) and all town's names that are comprised of given set of letters.
 -- Example 'oistmiahf' will return 'Sofia', 'Smith', … but not 'Rob' and 'Guy'.
+USE TelerikAcademy
+GO
 
+CREATE FUNCTION ufn_isComposed (@setOfLetters varchar(50), @name varchar(50))
+RETURNS BIT
+AS
+BEGIN
+	DECLARE @lenOfName int = LEN(@name),
+			@currentIndex int = 1,
+			@currentChar char,
+			@isComposed bit = 1
+
+	WHILE (@currentIndex <= @lenOfName)
+	BEGIN
+		SET @currentChar = LOWER(SUBSTRING(@name, @currentIndex, 1))
+
+		IF (CHARINDEX(@currentChar, LOWER(@setOfLetters)) = 0)
+		BEGIN
+			SET @isComposed = 0
+			BREAK
+		END
+
+		SET @currentIndex = @currentIndex + 1
+	END
+	
+	RETURN @isComposed
+END
+GO
+
+CREATE FUNCTION ufn_comprisedNamesFromEmployeesAndTowns (@setOfLetters varchar(50))
+RETURNS TABLE
+AS
+	RETURN (
+		SELECT f.FirstName AS Name
+			FROM Employees f
+			WHERE dbo.ufn_isComposed(@setOfLetters, f.FirstName) = 1
+		UNION
+		SELECT l.LastName AS Name
+			FROM Employees l
+			WHERE dbo.ufn_isComposed(@setOfLetters, l.LastName) = 1
+		UNION
+		SELECT m.MiddleName AS Name
+			FROM Employees m
+			WHERE dbo.ufn_isComposed(@setOfLetters, m.MiddleName) = 1 AND m.MiddleName IS NOT NULL
+		UNION
+		SELECT t.Name
+			FROM Towns t
+			WHERE dbo.ufn_isComposed(@setOfLetters, t.Name) = 1) 
+GO
+
+SELECT * FROM dbo.ufn_comprisedNamesFromEmployeesAndTowns('oistmiahf')
+GO
 
 -- 8. Using database cursor write a T-SQL script that scans all employees and their addresses and prints all pairs of employees that live in the same town.
 

@@ -371,9 +371,9 @@ GO
 ROLLBACK TRAN
 
 -- 31. Start a database transaction and drop the table EmployeesProjects. Now how you could restore back the lost table data?
-BEGIN TRANSACTION
+BEGIN TRAN
 DROP TABLE EmployeesProjects
-ROLLBACK TRANSACTION
+ROLLBACK TRAN
 
 -- 32. Find how to use temporary tables in SQL Server.
 -- Using temporary tables backup all records from EmployeesProjects and restore them back after dropping and re-creating the table.
