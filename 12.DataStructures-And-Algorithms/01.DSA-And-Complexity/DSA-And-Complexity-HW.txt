@@ -1,0 +1,23 @@
+Task 01:
+	Answer: The Complexity is 0(n*n)
+	Explanation: The outter for loop, loops n times. The inner for loop, loops
+		n times too, because the start variable increase or the end variable
+		decrease at every loop until the condition is not true
+
+----------------------
+Task 02:
+	Answer: The Complexity is 0(n*m) if all the cell can be divided to 2
+		The Complexity is 0(n) if all the cell can't be divided to 2
+		The Average Complexity is 0(n*m/2)
+	Explanation: The outter for loop, loops n times. The Inner If defines if
+		The inner for loop will interact or not. The inner for loop, loops
+		m times
+
+---------------------
+Task 03:
+	Answer: The Complexity is 0(n*m)
+	Explanation: Implementing the nested loops using recursive method, Everytime
+		the method is called, the sum of the cells in the next row is going to 
+		be calculated
+	
+			
