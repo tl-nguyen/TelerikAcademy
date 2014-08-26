@@ -225,25 +225,7 @@ GO
 -- Sample output: 
 --		Sofia -> Svetlin Nakov, Martin Kulov, George Denchev 
 --		Ottawa -> Jose Saraiva …
-DECLARE townCursor CURSOR READ_ONLY FOR
-	SELECT TownID, Name FROM Towns
-	
-	OPEN townCursor
-	DECLARE @townId int, @townName char(50), @empName char(50)
-	FETCH NEXT FROM townCursor INTO @townId, @townName
-	
-	WHILE @@FETCH_STATUS = 0
-	BEGIN
-		PRINT @townName + dbo.ufn_findEmplFromTown(@townId)
-		
-		FETCH NEXT FROM townCursor INTO @townId, @townName
-	END
-
-	CLOSE townCursor
-	DEALLOCATE townCursor
-GO
-
-ALTER FUNCTION ufn_findEmplFromTown (@townId int)
+CREATE FUNCTION ufn_findEmplFromTown (@townId int)
 RETURNS char(512)
 AS
 BEGIN
@@ -270,6 +252,23 @@ BEGIN
 END
 GO
 
+DECLARE townCursor CURSOR READ_ONLY FOR
+	SELECT TownID, Name FROM Towns
+	
+	OPEN townCursor
+	DECLARE @townId int, @townName char(50), @empName char(50)
+	FETCH NEXT FROM townCursor INTO @townId, @townName
+	
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		PRINT @townName + dbo.ufn_findEmplFromTown(@townId)
+		
+		FETCH NEXT FROM townCursor INTO @townId, @townName
+	END
+
+	CLOSE townCursor
+	DEALLOCATE townCursor
+GO
 
 -- 10. Define a .NET aggregate function StrConcat that takes as input a sequence of strings and return a single string that consists of the input strings separated by ','.
 -- For example the following SQL statement should return a single string:   SELECT StrConcat(FirstName + ' ' + LastName) FROM Employees
