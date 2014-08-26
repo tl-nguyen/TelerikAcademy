@@ -219,11 +219,56 @@ DECLARE empCursor CURSOR READ_ONLY FOR
 
 	CLOSE empCursor
 	DEALLOCATE empCursor
+GO
 
 -- 9. * Write a T-SQL script that shows for each town a list of all employees that live in it.
 -- Sample output: 
 --		Sofia -> Svetlin Nakov, Martin Kulov, George Denchev 
 --		Ottawa -> Jose Saraiva …
+DECLARE townCursor CURSOR READ_ONLY FOR
+	SELECT TownID, Name FROM Towns
+	
+	OPEN townCursor
+	DECLARE @townId int, @townName char(50), @empName char(50)
+	FETCH NEXT FROM townCursor INTO @townId, @townName
+	
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		PRINT @townName + dbo.ufn_findEmplFromTown(@townId)
+		
+		FETCH NEXT FROM townCursor INTO @townId, @townName
+	END
+
+	CLOSE townCursor
+	DEALLOCATE townCursor
+GO
+
+ALTER FUNCTION ufn_findEmplFromTown (@townId int)
+RETURNS char(512)
+AS
+BEGIN
+	DECLARE nameCursor CURSOR READ_ONLY FOR
+		SELECT FirstName 
+		FROM Employees e, Addresses a
+		WHERE e.AddressID = a.AddressID AND a.TownID = @townId
+	
+	OPEN nameCursor
+	DECLARE @emplName char(20), @names char(512)
+	FETCH NEXT FROM nameCursor INTO @emplName
+	SET @names = ''
+
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		SET @names = RTRIM(@names) + ' - ' + @emplName
+		FETCH NEXT FROM nameCursor INTO @emplName
+	END
+
+	CLOSE nameCursor
+	DEALLOCATE nameCursor
+
+	RETURN @names
+END
+GO
 
 
 -- 10. Define a .NET aggregate function StrConcat that takes as input a sequence of strings and return a single string that consists of the input strings separated by ','.
