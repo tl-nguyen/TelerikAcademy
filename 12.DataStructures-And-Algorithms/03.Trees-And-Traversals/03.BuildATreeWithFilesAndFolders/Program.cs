@@ -12,15 +12,18 @@ namespace _03.BuildATreeWithFilesAndFolders
         public static Folder Tree = new Folder("C:\\Windows\\");
         static void Main(string[] args)
         {
-            BuildTree(Tree);
-            Console.WriteLine();
+            Console.WriteLine("Total size of Windows = {0} MB", BuildTree(Tree) / 1024000);
         }
 
-        private static void BuildTree(Folder root)
+        private static long BuildTree(Folder root)
         {
-            foreach (string file in Directory.GetFiles(root.Name))
+            var currentDir = new DirectoryInfo(root.Name);
+            var currentDirSize = 0L;
+
+            foreach (var file in currentDir.GetFiles())
             {
-                root.Files.Add(new File(file));
+                root.Files.Add(new File(file.Name, file.Length));
+                currentDirSize += file.Length;
             }
 
             foreach (string subDirectory in Directory.GetDirectories(root.Name))
@@ -29,13 +32,15 @@ namespace _03.BuildATreeWithFilesAndFolders
                 {
                     var recentFolder = new Folder(subDirectory);
                     root.ChildFolders.Add(recentFolder);
-                    BuildTree(recentFolder);
+                    currentDirSize += BuildTree(recentFolder);
                 }
                 catch (UnauthorizedAccessException e)
                 {
                     Console.WriteLine(e.Message);
                 }
             }
+
+            return currentDirSize;
         }
     }
 }

@@ -9,11 +9,12 @@ namespace _03.BuildATreeWithFilesAndFolders
     class File
     {
         public string Name { get; set; }
-        public int size { get; set; }
+        public long size { get; set; }
 
-        public File(string name)
+        public File(string name, long size)
         {
             this.Name = name;
+            this.size = size;
         }
     }
 }
