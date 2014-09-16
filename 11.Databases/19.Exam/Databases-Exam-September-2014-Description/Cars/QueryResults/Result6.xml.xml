@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Cars>
+  <Car Manufacturer="zVKNbOL" Model="jmWRnkVnGUugKhgcfDaL" Year="1995" Price="104486.00">
+    <TransmissionType>Automatic</TransmissionType>
+    <Dealer Name="aVhMNylErc">
+      <Cities />
+    </Dealer>
+  </Car>
+  <Car Manufacturer="zVKNbOL" Model="jmWRnkVnGUugKhgcfDaL" Year="1995" Price="104486.00">
+    <TransmissionType>Automatic</TransmissionType>
+    <Dealer Name="aVhMNylErc">
+      <Cities />
+    </Dealer>
+  </Car>
+</Cars>

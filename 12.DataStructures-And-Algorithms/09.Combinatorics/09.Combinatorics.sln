@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.PasswordsCombinations", "01.PasswordsCombinations\01.PasswordsCombinations.csproj", "{19522FA6-7830-46B0-95FC-6EB4619BBA02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.HowManyBunnies", "02.HowManyBunnies\02.HowManyBunnies.csproj", "{B93B1B1A-8821-4692-A35C-B81E4BA8DF05}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19522FA6-7830-46B0-95FC-6EB4619BBA02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19522FA6-7830-46B0-95FC-6EB4619BBA02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19522FA6-7830-46B0-95FC-6EB4619BBA02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19522FA6-7830-46B0-95FC-6EB4619BBA02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B93B1B1A-8821-4692-A35C-B81E4BA8DF05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B93B1B1A-8821-4692-A35C-B81E4BA8DF05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B93B1B1A-8821-4692-A35C-B81E4BA8DF05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B93B1B1A-8821-4692-A35C-B81E4BA8DF05}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

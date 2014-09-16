@@ -1,0 +1,20 @@
+Connection string for "Company" database: (location)
+.\SQLEXPRESS
+-------------------------------
+Connection string for "Cars" database: (location)
+.\SQLEXPRESS
+-------------------------------
+Relationships for "Company" database: (first-table : second-table - type of relationship)
+Employees : Project - Many to many
+Departments : Employees - One to many
+Employees : Employees - One To Many ( for manager and employees )
+Employees : Reports - One To Many
+-------------------------------
+Relationships for "Cars" database: (first-table : second-table - type of relationship)
+Manufacturer : Car - One to Many
+Dealer : City - One to Many
+Dealer : Car - One To Many
+-------------------------------
+Query files: 
+
+queries results: Databases-Exam-September-2014-Description\Cars\QueryResults
