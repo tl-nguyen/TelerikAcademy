@@ -12,7 +12,7 @@
     {
         static void Main(string[] args)
         {
-            var dbContext = new StudentSystemDbContext();
+            var dbContext = new StudentSystemData();
 
             var student = new Student
             {
@@ -28,8 +28,12 @@
             dbContext.Students.Add(student);
             dbContext.SaveChanges();
 
-            var savedStudent = dbContext.Students.First();
-            Console.WriteLine(savedStudent.Name);
+            var savedStudents = dbContext.Students.All();
+            
+            foreach (var stud in savedStudents)
+            {
+                Console.WriteLine(stud.Name);
+            }
         }
     }
 }

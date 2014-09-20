@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IStudentSystemData.cs" />
+    <Compile Include="StudentSystemData.cs" />
     <Compile Include="IStudentSystemDbContext.cs" />
     <Compile Include="Migrations\201408301914460_InitialCreate.cs" />
     <Compile Include="Migrations\201408301914460_InitialCreate.Designer.cs">

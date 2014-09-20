@@ -7,28 +7,28 @@
     using System.Net.Http;
     using System.Web.Http;
 
-    using StudentSystem.Data.Repositories;
+    using StudentSystem.Data;
     using StudentSystem.Model;
     using StudentSystem.Services.Models;
 
     public class CoursesController : ApiController
     {
-        private IRepository<Course> courses;
+        private IStudentSystemData data;
 
         public CoursesController()
-            : this(new Repository<Course>())
+            : this(new StudentSystemData())
         {
         }
 
-        public CoursesController(IRepository<Course> courses)
+        public CoursesController(IStudentSystemData data)
         {
-            this.courses = courses;
+            this.data = data;
         }
 
         [HttpGet]
         public IHttpActionResult All()
         {
-            var courses = this.courses.All().Select(CourseModel.FromCourse);
+            var courses = this.data.Courses.All().Select(CourseModel.FromCourse);
             return Ok(courses);
         }
 
@@ -46,8 +46,8 @@
                 Description = course.Description
             };
 
-            this.courses.Add(newCourse);
-            this.courses.SaveChanges();
+            this.data.Courses.Add(newCourse);
+            this.data.SaveChanges();
 
             course.Id = newCourse.Id;
 
@@ -62,7 +62,7 @@
                 return BadRequest(ModelState);
             }
 
-            var existingCourse = this.courses.All().FirstOrDefault(s => s.Id == id);
+            var existingCourse = this.data.Courses.All().FirstOrDefault(s => s.Id == id);
             if (existingCourse == null)
             {
                 return BadRequest("Such course doesn't exist");
@@ -78,7 +78,7 @@
                 existingCourse.Description = course.Description;
             }
 
-            this.courses.SaveChanges();
+            this.data.SaveChanges();
 
             return Ok(course);
         }
@@ -86,14 +86,14 @@
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
-            var existingCourse = this.courses.All().FirstOrDefault(s => s.Id == id);
+            var existingCourse = this.data.Courses.All().FirstOrDefault(s => s.Id == id);
             if (existingCourse == null)
             {
                 return BadRequest("Such student doesn't exist");
             }
 
-            this.courses.Delete(existingCourse);
-            this.courses.SaveChanges();
+            this.data.Courses.Delete(existingCourse);
+            this.data.SaveChanges();
 
             return Ok();
         }

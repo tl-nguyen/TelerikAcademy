@@ -7,28 +7,28 @@
     using System.Net.Http;
     using System.Web.Http;
 
-    using StudentSystem.Data.Repositories;
+    using StudentSystem.Data;
     using StudentSystem.Model;
     using StudentSystem.Services.Models;
 
     public class HomeworkController : ApiController
     {
-        private IRepository<Homework> homeworks;
+        private IStudentSystemData data;
 
         public HomeworkController()
-            : this(new Repository<Homework>())
+            : this(new StudentSystemData())
         {
         }
 
-        public HomeworkController(IRepository<Homework> homeworks)
+        public HomeworkController(IStudentSystemData data)
         {
-            this.homeworks = homeworks;
+            this.data = data;
         }
 
         [HttpGet]
         public IHttpActionResult All()
         {
-            var homeworks = this.homeworks.All().Select(HomeworkModel.FromHomework);
+            var homeworks = this.data.Homeworks.All().Select(HomeworkModel.FromHomework);
             return Ok(homeworks);
         }
 
@@ -46,8 +46,8 @@
                 TimeSent = homework.TimeSent
             };
 
-            this.homeworks.Add(newHomework);
-            this.homeworks.SaveChanges();
+            this.data.Homeworks.Add(newHomework);
+            this.data.SaveChanges();
 
             homework.Id = newHomework.Id;
 
@@ -62,7 +62,7 @@
                 return BadRequest(ModelState);
             }
 
-            var existingHomework = this.homeworks.All().FirstOrDefault(s => s.Id == id);
+            var existingHomework = this.data.Homeworks.All().FirstOrDefault(s => s.Id == id);
             if (existingHomework == null)
             {
                 return BadRequest("Such course doesn't exist");
@@ -73,7 +73,7 @@
                 existingHomework.Content = homework.Content;
             }
 
-            this.homeworks.SaveChanges();
+            this.data.SaveChanges();
 
             return Ok(homework);
         }
@@ -81,14 +81,14 @@
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
-            var existingHomework = this.homeworks.All().FirstOrDefault(s => s.Id == id);
+            var existingHomework = this.data.Homeworks.All().FirstOrDefault(s => s.Id == id);
             if (existingHomework == null)
             {
                 return BadRequest("Such student doesn't exist");
             }
 
-            this.homeworks.Delete(existingHomework);
-            this.homeworks.SaveChanges();
+            this.data.Homeworks.Delete(existingHomework);
+            this.data.SaveChanges();
 
             return Ok();
         }

@@ -28,7 +28,9 @@
 
         public void Add(T entity)
         {
-            this.ChangeEntityState(entity, EntityState.Added);
+            //this.ChangeEntityState(entity, EntityState.Added);
+            var entry = this.context.Entry(entity);
+            entry.State = EntityState.Added;
         }
 
         public void Update(T entity)

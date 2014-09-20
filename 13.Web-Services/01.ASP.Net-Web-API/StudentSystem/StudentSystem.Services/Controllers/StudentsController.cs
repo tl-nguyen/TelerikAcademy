@@ -7,28 +7,28 @@
     using System.Net.Http;
     using System.Web.Http;
 
-    using StudentSystem.Data.Repositories;
+    using StudentSystem.Data;
     using StudentSystem.Model;
     using StudentSystem.Services.Models;
 
     public class StudentsController : ApiController
     {
-        private IRepository<Student> students;
+        private IStudentSystemData data;
 
         public StudentsController()
-            : this(new Repository<Student>())
+            : this(new StudentSystemData())
         {
         }
 
-        public StudentsController(IRepository<Student> students)
+        public StudentsController(IStudentSystemData data)
         {
-            this.students = students;
+            this.data = data;
         }
 
         [HttpGet]
         public IHttpActionResult All()
         {
-            var students = this.students.All().Select(StudentModel.FromStudent);
+            var students = this.data.Students.All().Select(StudentModel.FromStudent);
             return Ok(students);
         }
 
@@ -46,8 +46,8 @@
                 Number = student.Number
             };
 
-            this.students.Add(newStudent);
-            this.students.SaveChanges();
+            this.data.Students.Add(newStudent);
+            this.data.SaveChanges();
 
             student.Id = newStudent.Id;
 
@@ -62,14 +62,14 @@
                 return BadRequest(ModelState);
             }
 
-            var existingStudent = this.students.All().FirstOrDefault(s => s.Id == id);
+            var existingStudent = this.data.Students.All().FirstOrDefault(s => s.Id == id);
             if (existingStudent == null)
             {
                 return BadRequest("Such student doesn't exist");
             }
 
             existingStudent.Name = student.Name;
-            this.students.SaveChanges();
+            this.data.SaveChanges();
 
             return Ok(student);
         }
@@ -77,14 +77,43 @@
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
-            var existingStudent = this.students.All().FirstOrDefault(s => s.Id == id);
+            var existingStudent = this.data.Students.All().FirstOrDefault(s => s.Id == id);
             if (existingStudent == null)
             {
                 return BadRequest("Such student doesn't exist");
             }
 
-            this.students.Delete(existingStudent);
-            this.students.SaveChanges();
+            this.data.Students.Delete(existingStudent);
+            this.data.SaveChanges();
+
+            return Ok();
+        }
+
+        [HttpPost]
+        public IHttpActionResult AddCourse(int id, int courseId)
+        {
+            var student = this.data.Students.All().FirstOrDefault(s => s.Id == id);
+
+            if (student == null)
+            {
+                return BadRequest("No such student in the system");
+            }
+
+            var course = this.data.Courses.All().FirstOrDefault(c => c.Id == courseId);
+
+            if (course == null)
+            {
+                return BadRequest("No such course in the system");
+            }
+
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            student.Courses.Add(course);
+
+            this.data.SaveChanges();
 
             return Ok();
         }
