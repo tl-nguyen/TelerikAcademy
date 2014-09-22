@@ -1,20 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-
-using Microsoft.AspNet.Identity;
-
-using Articles.Data;
-using Articles.WebAPI.Models;
-using Articles.Models;
-
-namespace Articles.WebAPI.Controllers
+﻿namespace Articles.WebAPI.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Http;
+    using System.Web.Http;
+
+    using Microsoft.AspNet.Identity;
+
+    using Articles.Data;
+    using Articles.WebAPI.Models;
+    using Articles.Models;
+
     public class ArticlesController : BaseController
     {
+        private const int defaultPageSize = 10;
+
         public ArticlesController(IArticlesData data)
             : base (data)
         {
@@ -95,11 +97,55 @@ namespace Articles.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
-            var articles = this.data.Articles.All()
-                    .Take(10)
-                    .Select(ArticleDataModel.FromArticle);
+            return Get(null, 0);
+        }
+
+        [HttpGet]
+        public IHttpActionResult Get(string category)
+        {
+            return Get(category, 0);
+        }
+
+        [HttpGet]
+        public IHttpActionResult Get(int page)
+        {
+            return Get(null, page);
+        }
+
+        [HttpGet]
+        public IHttpActionResult Get(string category, int page)
+        {
+            var articles = GetAllSortedByDate()
+                    .Skip(page * defaultPageSize)
+                    .Where(a => category != null ? a.Category == category : true)
+                    .Take(defaultPageSize);
 
             return Ok(articles);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public IHttpActionResult GetById(int id)
+        {
+            var article = this.data.Articles.Find(id);
+
+            if (article == null)
+            {
+                return NotFound();
+            }
+
+            var articleDetails = new ArticleDetailsDataModel(article);
+
+            return Ok(articleDetails);
+        }
+
+        private IQueryable<ArticleDataModel> GetAllSortedByDate()
+        {
+            var articles = this.data.Articles.All()
+                    .OrderByDescending(a => a.DateCreated)
+                    .Select(ArticleDataModel.FromArticle);
+
+            return articles;
         }
     }
 }

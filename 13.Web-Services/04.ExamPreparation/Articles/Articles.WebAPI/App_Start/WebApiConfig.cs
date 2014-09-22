@@ -23,8 +23,21 @@ namespace Articles.WebAPI
 
             config.Routes.MapHttpRoute(
                 name: "Articles",
-                routeTemplate: "api/users/{id}",
-                defaults: new { controller = "Articles" }
+                routeTemplate: "api/articles/{id}",
+                defaults: new 
+                { 
+                    controller = "Articles",
+                    id = RouteParameter.Optional
+                }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "Comments",
+                routeTemplate: "api/articles/{id}/comments",
+                defaults: new
+                {
+                    controller = "Comments"
+                }
             );
 
             config.Routes.MapHttpRoute(

@@ -29,5 +29,7 @@
         public IDbSet<Like> Likes { get; set; }
 
         public IDbSet<Tag> Tags { get; set; }
+
+        public IDbSet<Alert> Alerts { get; set; }
     }
 }
